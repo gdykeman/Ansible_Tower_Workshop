@@ -1,0 +1,17 @@
+:figure-caption!:
+
+= Job Templates
+
+This is where the rubber meets the road. A job template combines all of the things we just set up, including:
+
+* machine credentials
+* cloud credentials
+* playbooks from your project's source SCM
+* inventories
+
+It then brings them all together, to provide a platform for effectively managing your infrastructure. Job Templates also have the ability to limit which hosts are acted on in multiple ways and configure all of the 'normal' Ansible things like whether or not a job is run with privilege escalation.
+
+image::ansible-lab-figure13-job-template.png[caption="Figure 12: ", title="Creating a Job Template"]
+
+image::ansible-lab-figure13a-ec2-survey.png[caption="Figure 13: ", title="Creating an Job Template Survey"]
+
