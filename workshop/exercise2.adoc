@@ -15,10 +15,9 @@ The second tag is called `user_id`, and is set to the value that you set when yo
 
 The relevant part of the task is
 
-[source]
+[source,yaml]
 ----
   ec2:
-...
     instance_tags:
       ansible_lab: true
       user_id: "{{ user_tag }}"
@@ -39,4 +38,15 @@ For example, for our `user_id` tag, when I used `jduncan` as the value in my Job
 In the Inventories page, I can select these tag groups and do work on them as a whole.
 
 image::ansible-lab-task3-2-ansible-tags.png[caption="Figure 16: ", title="Using Amazon Tags to Create Dynamic Groups in Ansible Tower"]
+
+[TIP]
+.To find the list of automatically-created tag groups:
+====
+* Click on `INVENTORIES`.
+* Click on `ansible-ec2-instances`.
+* Click on `ec2-east`.
+* Click on `tags`.
+====
+
+You can now see all of the automatic groups. To find your own user-name group, click on `tag_user_id`.
 

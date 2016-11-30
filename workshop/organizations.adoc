@@ -23,7 +23,18 @@ Credentials are what Ansible Tower uses to connect our automation to everything 
 
 Since this lab is in AWS we need to tell Ansible Tower how to connect. For this we create an AWS Credential. For the AWS information we create a user in IAM and give it the needed permissions. That information is available in the link:https://aws.amazon.com/iam/faqs/[IAM Documentation].
 
-image::ansible-lab-figure05-aws-credential.png[caption="Figure 4: ", title="Creating an AWS Credential"]
+image::ansible-lab-figure05-aws-credential.png[caption="Figure 4a: ", title="Creating an AWS Credential"]
+
+image::aws_credential_permissions.png[caption="Figure 4b: ", title="Adding Permissions to an AWS Credential"]
+
+After saving the AWS credentials:
+
+* Click the white 'PERMISSIONS' button
+* Click the green '+Add' button
+* Click 'TEAMS'
+* Place a checkmark beside 'Lab-Team'
+* Assign 'Use'
+* Click 'Save'
 
 ===== Machine Credentials
 
@@ -36,14 +47,15 @@ image::ansible-lab-figure06-machine-credential.png[caption="Figure 5: ", title="
 ====
 Every artifact (Credentials, Job Templates, etc.) in Ansible Tower has associated permissions. Be sure to associate them with the correct users and teams so they can see and use/admin them as needed when they log in!
 
-image::ansible-lab-figure07-machinecred-permissions.png[caption="Figure 6: ", title="Adding Team Permissions"]
+image::machine_credential_permissions.png[caption="Figure 6: ", title="Adding Team Permissions"]
 
 After saving the machine credentials:
-. Click the green '+Add' button
-. Click 'TEAMS'
-. Place a checkmark beside 'Lab-Team'
-. Assign 'Admin'
-. Click 'Save'
+
+* Click the green '+Add' button
+* Click 'TEAMS'
+* Place a checkmark beside 'Lab-Team'
+* Assign 'Use'
+* Click 'Save'
 
 ====
 

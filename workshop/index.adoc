@@ -27,6 +27,17 @@ Your Responsibilities
 
 Hopefully you have your laptop with you. If not, please find a shoulder-surfing buddy. See? Not only can we dig into Ansible but you can make a new friend!
 
+[.lead]
+Conventions Used in This Document
+[TIP]
+.Whenever you see a section like this:
+====
+* Please pay attention to the steps listed.
+* We are leading you through a procedure, to help you to understand how Ansible Tower functions.
+====
+
+[.lead]
+Location-Specific Information
 [IMPORTANT]
 .WiFi Access
 ====
@@ -64,10 +75,3 @@ image::ansible_tower_logo.png[Ansible]
 === Infrastructure
 
 For this lab, we will be using Ansible Tower 3.0.2, which is the latest production release. We are running it in an link:https://aws.amazon.com/ec2/instance-types/[`m4.xlarge`] AWS instance.
-
-[NOTE]
-.We know this is resource overkill
-====
-But we'll only be running this for a few days and our bosses are paying the bill. :)
-====
-

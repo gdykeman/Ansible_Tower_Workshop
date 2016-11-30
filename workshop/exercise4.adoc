@@ -17,7 +17,7 @@ The thing that you have to do, though, is account for ALL of the variables that 
 For this exercise, we will create a Job Template that will create local users on a given system. First, let's look at our playbook. For this we will be using link:https://github.com/ajacocks/Ansible/tree/master/rhel_host_config[`rhel_host_config`] section in our GitHub repo.
 
 .playbook
-[source]
+[source,yaml]
 ----
 ---
 - name: setup rhel VM
@@ -30,7 +30,7 @@ For this exercise, we will create a Job Template that will create local users on
 ----
 
 .host_common role tasks
-[source]
+[source,yaml]
 ----
 ---
 - name: Add or remove user account
@@ -85,8 +85,8 @@ For this example exercise, we will create a job template that will add system us
 
 We will create a simple survey to handle all of this, along with prompting for our `Extra Variables` in the Job Template so we can dynamically create users for a given system or group of systems.
 
-image::add-users-student25-part1.png[caption="Figure 19: ", title="Creating a Job Template to Add Users (Part 1)"]
-image::add-users-student25-part2.png[caption="Figure 20: ", title="Creating a Job Template to Add Users (Part 2)"]
+image::add-users-student25-part1.png[caption="Figure 20: ", title="Creating a Job Template to Add Users (Part 1)"]
+image::add-users-student25-part2.png[caption="Figure 21: ", title="Creating a Job Template to Add Users (Part 2)"]
 
 [TIP]
 .A Few Important Items
@@ -96,5 +96,19 @@ image::add-users-student25-part2.png[caption="Figure 20: ", title="Creating a Jo
 * The user name is defined by the `users:` dictionary, in the `Extra Variables` section, and is automatically set to the user ID that you logged in to tower with.
 ====
 
-image::add-users-student25-survey.png[caption="Figure 21: ", title="Creating a Job Template Survey"]
+image::add-users-student25-survey.png[caption="Figure 22: ", title="Creating a Job Template Survey"]
 
+[TIP]
+.Once the job template and accompanying survey are completed and saved:
+====
+* Click the image:button_launch.png[Title="Launch Button"] (launch) button next to the `add users student1` (using your user name, instead of `student1`) template, in the `Job Templates` section, at the bottom of the screen.
+* Select whether the user should be present, or absent.  For this example, choose `present`.
+* Click the image:button_launch_text.png[Title="Text Launch Button"] button, to execute the job.
+* You will be redirected to a job monitoring screen, like the figure, below:
+====
+
+[cols="2"]
+|===
+a|image::student1_user_create_results.png[]
+a|image::student1_user_create_stdout.png[]
+|===
