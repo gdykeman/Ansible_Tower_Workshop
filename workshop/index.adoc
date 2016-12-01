@@ -3,10 +3,10 @@
 :toc-title: Agenda
 :toc2: left
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: http://tower.workshop.redhat-fierce.io/_images
-:date: 26-Oct-2016
-:location: Denver, CO
-:tower_url: https://ansible.tower.redhat-fierce.io
+:imagesdir: http://tower.workshop.bh.redhat-fierce.io/_images
+:date: 19-Jan-2017
+:location: Boston, MA
+:tower_url: https://ansible.tower.bh.redhat-fierce.io
 :toclevels: 3
 :source-highlighter: highlight.js
 
@@ -41,7 +41,7 @@ Location-Specific Information
 [IMPORTANT]
 .WiFi Access
 ====
-ssid: `Foothills Guest`
+ssid: `TBD`
 ====
 ****
 
@@ -49,19 +49,19 @@ ssid: `Foothills Guest`
 .Today's Team
 ****
 [.lead]
-Jonathan Van Meter - Solutions Architect
+Bill hirsch - Solutions Architect
 
-Jonathan is a virtualization infrastructucture, architecture and design specialist, who has been working with Red Hat Linux since 1999.
-
-[.lead]
-Brad Sollar - Solutions Architect
-
-Brad is a cloud and security specialist, with a background in development.  He has been working with Red Hat Enteprise Linux based solutions since 2007.
+Bill is an account SA with Red Hat focused on Northeast public sector accounts. He has a background in Linux/Unix systems administration and lives in Pittsburgh with his wife, 3 boys, and ever-shedding pets.
 
 [.lead]
-{empty}J. Alexander Jacocks - Solutions Architect
+Skip Paul - Manager, Solution Architecture
 
-Alex has been with Red Hat for 6 months, but has been using Red Hat Linux since 1996.  He lives in the (very) rural Eastern Shore of Maryland, and is entirely dedicated to the advancement of UNIX, across the world.
+Skip is a Manager of Solution Architecture here in Boston...
+
+[.lead]
+Nate Salemme - Solutions Architect
+
+Nate is a Solutions Architect here in Boston...
 
 ****
 == Document Copyright
