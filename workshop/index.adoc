@@ -61,7 +61,12 @@ Skip is a Manager of Solution Architecture here in Boston...
 [.lead]
 Nate Salemme - Solutions Architect
 
-Nate is a Solutions Architect here in Boston...
+Nate is a Solution Architect working with strategic and enterprise commercial customers across the northeast.  His background includes Systems Engineering and Solution Architecture and currently resides just outside Boston with his wife, son and annoying rescue dog.
+
+[.lead]
+Matt St. Onge - Solutions Architect
+
+Matt is a Solution Architect ...
 
 ****
 == Document Copyright
