@@ -1,4 +1,4 @@
-:tower_url: https://ansible.tower.redhat-fierce.io
+:tower_url: https://ansible.tower.bh.redhat-fierce.io
 
 = Setup
 
@@ -49,4 +49,3 @@ We won't need to cover them all, but a few are key for us to be able to effectiv
 * Notifications - Manage various kinds of notifications like Email, SMS, and Slack
 * View your License Info
 * About Tower
-
