@@ -1,5 +1,5 @@
 :figure-caption!:
-:tower_url: https://ansible.tower.redhat-fierce.io
+:tower_url: https://ansible-tower-bos.redhatgov.io
 
 = Exercise One - Creating EC2 Instances
 
@@ -50,4 +50,3 @@ image::ansible-lab-task2-2-job-tags.png[caption="Figure 14: ", title="Limiting R
 
 [TIP]
 Job Templates can also prompt for Playbook Tags at launch. Even more ways to be dynamic and not have to repeat yourself!
-
