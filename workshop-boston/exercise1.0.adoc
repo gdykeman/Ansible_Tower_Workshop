@@ -1,0 +1,32 @@
+= Exercise 1.0 - Installing Ansible Core and Ad-hoc commands
+
+== Installing Ansible Core
+
+Before we can use ansible to run some stuff, we've got to get Ansible installed.
+Follow these few, simple steps and you should be good to go.  If you have trouble, let
+one of your instructors know and we'll get you sorted.
+
+[NOTE]
+====
+* Login to your control node
+- ```ssh <username>@<IP of your control node>```
+* Install Ansible Core
+- ```sudo yum install -y ansible```
+
+====
+
+== Running Ad-hoc commands
+Now that you've got ansible installed and working locally, we are going to start messing with your endpoints (your other two nodes)
+by running some ad-hoc commands.
+
+[NOTE]
+====
+* Reach out and say hi using the ping module
+- ```ansible web -m ping```
+* Install the EPEL repository package using the yum module
+- ```ansible web -b -m yum -a "name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present"```
+* Install Nginx using the yum module
+- ```ansible web -b -m yum -a "name=nginx state=present"```
+* Start the Nginx service using the service module
+- ```ansible web -b -m service -a "name=nginx state=started"```
+====

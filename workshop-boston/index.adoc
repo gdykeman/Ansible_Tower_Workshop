@@ -1,13 +1,10 @@
 :badges:
 :icons:
-:toc-title: Agenda
-:toc2: left
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: http://tower.workshop.bh.redhat-fierce.io/_images
+:imagesdir: http://tower.workshop.bos.redhatgov.io/_images
 :date: 19-Jan-2017
 :location: Boston, MA
-:tower_url: https://ansible.tower.bh.redhat-fierce.io
-:toclevels: 3
+:tower_url: https://ansible-tower-bos.redhatgov.io
 :source-highlighter: highlight.js
 
 = Automation for Everyone
@@ -22,8 +19,8 @@ Today is meant for anyone who has any exposure to Ansible, whether you have used
 [.lead]
 Your Responsibilities
 
-* Have a discussion. This will be boring if it's just us up here talking for over 2 hours.
-* Participate. We are going to cut you loose in a live Ansible Tower instance here in just a little while. Have questions. Have opinions.
+* Have a discussion. This will be boring if it's just us up here talking for over 4 hours.
+* Participate. We are going to cut you loose with Ansible here in just a little while. Have questions. Have opinions.
 
 Hopefully you have your laptop with you. If not, please find a shoulder-surfing buddy. See? Not only can we dig into Ansible but you can make a new friend!
 
@@ -56,6 +53,11 @@ but has a passion for Ansible.  He has a background in Linux/Unix systems admini
 of Infrastructure at the University of Pittsburgh Medical Center.
 
 Bill lives in Pittsburgh with his wife, 3 boys, and ever-shedding pets.
+
+[.lead]
+Gerald Dykeman - Domain Architect - Ansible
+
+Gerald is a Domain Architect who specializes in all things Ansible Core and Tower.
 
 [.lead]
 Skip Paul - Manager, Solution Architecture
@@ -92,8 +94,13 @@ This document was created by and for Red Hat, Inc. It is being released under li
 
 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
-== Installing Ansible Tower
+== Workshop Infrastructure
 image::ansible_tower_logo.png[Ansible]
-=== Infrastructure
 
-For this lab, we will be using Ansible Tower 3.0.2, which is the latest production release. We are running it in an link:https://aws.amazon.com/ec2/instance-types/[`m4.xlarge`] AWS instance.
+
+For this lab, each student are equipped with the following:
+* 1 Control node (to run ansible plays and install Ansible Tower).  This is a Red Hat Enterprise Linux 7.2 server.
+* 2 Endpoint nodes (to execute ansible playbooks upon).
+* All three of the afore mentioned nodes are running Red Hat Enterprise Linux 7.2
+* Ansible Core 2.2
+* Ansible Tower 3.0.3

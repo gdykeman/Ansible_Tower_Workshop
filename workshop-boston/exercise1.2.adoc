@@ -1,0 +1,8 @@
+:figure-caption!:
+
+= Exercise 1.2 - Running Your Playbook
+
+[NOTE]
+====
+* steps to run the playbook they just wrote
+====

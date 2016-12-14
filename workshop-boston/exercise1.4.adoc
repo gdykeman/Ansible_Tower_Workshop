@@ -1,0 +1,14 @@
+:tower_url: https://your-control-node-ip-address
+:license_url: http://ansible-workshop-bos.redhatgov.io/wslic.txt
+
+= Exercise 1.4 - Configuring Ansible Tower
+
+In this exercise, we are going to get Ansible Tower configured
+
+[NOTE]
+====
+* Walk them through each step of configuration for
+* credentials
+* projects
+* inventory
+* Job Template
