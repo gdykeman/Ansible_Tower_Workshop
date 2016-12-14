@@ -22,26 +22,24 @@
 # topic groups and topics on the main page.
 ---
 Name: Workshop
-Dir: workshop
+Dir: workshop-boston
 Topics:
   - Name: Agenda
     File: index
   - Name: Setup
     File: setup
-  - Name: Organizations
-    File: organizations
-  - Name: Projects
-    File: projects
-  - Name: Job Templates
-    File: job-templates
-  - Name: Exercise 1
-    File: exercise1
-  - Name: Exercise 2
-    File: exercise2
-  - Name: Exercise 3
-    File: exercise3
-  - Name: Exercise 4
-    File: exercise4
+  - Name: Exercise 1.0
+    File: exercise1.0
+  - Name: Exercise 1.1
+    File: exercise1.1
+  - Name: Exercise 1.2
+    File: exercise1.2
+  - Name: Exercise 1.3
+    File: exercise1.3
+  - Name: Exercise 1.4
+    File: exercise1.4
+  - Name: Exercise 1.5
+    File: exercise1.5
   - Name: Wrap Up
     File: wrapup
 
