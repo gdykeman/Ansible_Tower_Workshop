@@ -5,21 +5,38 @@
 
 In this exercise, we are going to get Ansible Tower installed on your control node
 
-[NOTE]
 ====
-* ssh into your control node
-* Change directories to /tmp
-* Download the latest Ansible Tower package
-- ```curl -O http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-latest.tar.gz```
-* Untar and unzip the package file
-- ```tar xvfz /tmp/ansible-tower-setup-latest.tar.gz```
-* Change directories into the ansible tower package
-- ```cd /tmp/ansible-tower-setup-<version number>```
-* Using an editor of your choice, open the inventory file
-- ```vi /tmp/ansible-tower-setup-<version number>/inventory```
-* fill a few variables out in an inventory file: ```admin_password, redis_password, pg_password```
-
-.inventory
+Step 1: ssh into your control node
+[source,bash]
+----
+ssh <username>@<IP of control node>
+----
+Step 2: Change directories to /tmp
+[source,bash]
+----
+cd /tmp
+----
+Step 3: Download the latest Ansible Tower package
+[source,bash]
+----
+curl -O http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-latest.tar.gz
+----
+Step 4: Untar and unzip the package file
+[source,bash]
+----
+tar xvfz /tmp/ansible-tower-setup-latest.tar.gz
+----
+Step 5: Change directories into the ansible tower package
+[source,bash]
+----
+cd /tmp/ansible-tower-setup-<version number>
+----
+Step 6: Using an editor of your choice, open the inventory file
+[source,bash]
+----
+vi /tmp/ansible-tower-setup-<version number>/inventory
+----
+Step 7: fill a few variables out in an inventory file: ```admin_password, redis_password, pg_password```
 [source,yaml]
 ----
 [primary]
@@ -40,10 +57,16 @@ pg_database=awx
 pg_username=awx
 pg_password='ansibleWS'
 ----
-* run the Ansible Tower setup script
-- ```/tmp/ansible-tower-setup-<version number>/setup.sh```
-* Download your license key
-- ```curl -O {license_url}```
+Step 8: run the Ansible Tower setup script
+[source,bash]
+----
+/tmp/ansible-tower-setup-<version number>/setup.sh
+----
+Step 9: Download your license key
+[source,bash]
+----
+curl -O {license_url}
+----
 ====
 
 === End Result

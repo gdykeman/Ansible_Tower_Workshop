@@ -1,5 +1,83 @@
 :figure-caption!:
+:become_url: http://docs.ansible.com/ansible/become.html#new-command-line-options
+:yum_url: http://docs.ansible.com/ansible/yum_module.html
 
-= Exercise 1.1 - Writing your first playbook
-[NOTE]
-* Whole bunch of steps, yaml, etc.
+= Exercise 1.1 - Writing Your First playbook
+
+Now that you've gotten a sense of how ansible works, we are going to write our first
+ansible playbook.  The playbook is where you can take some of those ad-hoc commands you just ran
+and put them into a repeatable set of plays and tasks.  A playbook can have multiple plays and a play
+can have multiple tasks.  However, for our first playbook, we are only going to write one play.
+
+== Section 1 - Defining Your Play
+Let's begin by writing the beginning of the play and then understanding what each line accomplishes
+
+
+====
+[source,yaml]
+----
+  ---
+    - hosts: web
+      name: This is a play within a playbook
+      become: yes
+      vars:
+        httpd_packages:
+          - httpd
+          - mod_wsgi
+----
+
+====
+
+- ```---``` Defines YAML syntax
+- ```hosts: web``` Defines which hosts in your inventory this play will run against
+- ```name: This is our first play in our first playbook``` This describes our play
+- ```become: yes``` Enables user privilege escalation.  The default is sudo, but su, pbrun, and link:{become_url}[several others] are also supported.
+- The below are the varibles of your play.  These can help us account for slight differences between systems
+as well as be very useful for ansible conditionals and loops.
+[source,text]
+----
+vars:
+  httpd_packages:
+    - httpd
+    - mod_wsgi
+----
+
+
+== Section 2: Adding Tasks to Your Play
+Now that we've defined your play, let's add some tasks to get some things done
+
+====
+[source,yaml]
+----
+  tasks:
+  - name: install apache
+    yum:
+      name: httpd
+      state: present
+
+  - name: copy index.html
+    copy:
+      src: files/index.html
+      dest: /var/www/html/
+
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+----
+
+====
+
+- ```tasks:``` This denotes that one or more tasks are about to be defined
+- ```- name:``` Each task requires a name which will print to standard output when you run your playbook.
+Therefore, give your tasks a name that is short, sweet, and to the point
+[source,text]
+----
+yum:
+  name: httpd
+  state: present
+----
+These three lines are calling the Ansible module *yum* to install httpd.
+link:{yum_url}[Click here] to see all options for the yum module.
+
+*To Be Continued...*

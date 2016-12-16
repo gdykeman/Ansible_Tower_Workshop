@@ -27,11 +27,33 @@ Hopefully you have your laptop with you. If not, please find a shoulder-surfing 
 [.lead]
 Conventions Used in This Document
 [TIP]
-.Whenever you see a section like this:
+.Whenever you see a section like this, please pay close attention.  We are leading you through a process.
 ====
-* Please pay attention to the steps listed.
-* We are leading you through a procedure, to help you to understand how Ansible Tower functions.
+
 ====
+
+====
+Step 1: Run this command to do something or other
+[source,bash]
+----
+ansible web -m setup
+----
+* Step 2: Edit this file in this specific way
+
+[source,yaml]
+----
+---
+  - hosts: web
+    name: This is a play within a playbook
+    become: yes
+    vars:
+      httpd_packages:
+        - httpd
+        - mod_wsgi
+----
+
+====
+
 
 [.lead]
 Location-Specific Information
