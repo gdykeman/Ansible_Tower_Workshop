@@ -1,3 +1,5 @@
+:source-highlighter: highlight.js
+
 = Exercise 1.0 - Installing Ansible Core and Ad-hoc commands
 
 == Installing Ansible Core
@@ -16,17 +18,18 @@ one of your instructors know and we'll get you sorted.
 ====
 
 == Running Ad-hoc commands
-Now that you've got ansible installed and working locally, we are going to start messing with your endpoints (your other two nodes)
-by running some ad-hoc commands.
+Now that you've got ansible installed, we are going to run some ad-hoc commands to help you get a feel for how Ansible works.
 
 [NOTE]
 ====
-* Reach out and say hi using the ping module
-- ```ansible web -m ping```
-* Install the EPEL repository package using the yum module
-- ```ansible web -b -m yum -a "name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present"```
-* Install Nginx using the yum module
-- ```ansible web -b -m yum -a "name=nginx state=present"```
-* Start the Nginx service using the service module
-- ```ansible web -b -m service -a "name=nginx state=started"```
+* Take a look at your web node's configuration.  The ```setup``` module displays ansible facts about an endpoint.
+- ```ansible web -m setup```
+* Now, let's install Apache using the ```yum``` module
+- ```ansible web -m yum -a "name=httpd state=present" -b```
+* OK, Apache is installed now so let's start it up using the ```service``` module
+- ```ansible web -m service -a "name=httpd state=started" -b```
+* Finally, let's clean up after ourselves.  First, stop the httpd service
+- ```ansible web -m service -a "name=httpd state=stopped" -b```
+* Second, remove the Apache package
+- ```ansible web -m yum -a "name=httpd state=absent" -b```
 ====

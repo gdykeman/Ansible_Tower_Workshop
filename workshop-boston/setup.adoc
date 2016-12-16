@@ -27,4 +27,4 @@ Be sure you can log in to your ec2 instances.  If you can't log in start shoutin
 
 === End Result
 
-At this point, everyone should have logged into each of your 3 nodes.  If you haven't, tell us now so we can get you fixed up.
+At this point, everyone should have logged into each of your 3 nodes.  If you haven't, let us know so we can get you fixed up.

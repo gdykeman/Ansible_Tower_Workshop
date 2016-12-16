@@ -99,8 +99,10 @@ image::ansible_tower_logo.png[Ansible]
 
 
 For this lab, each student are equipped with the following:
+====
 * 1 Control node (to run ansible plays and install Ansible Tower).  This is a Red Hat Enterprise Linux 7.2 server.
 * 2 Endpoint nodes (to execute ansible playbooks upon).
 * All three of the afore mentioned nodes are running Red Hat Enterprise Linux 7.2
 * Ansible Core 2.2
 * Ansible Tower 3.0.3
+====
