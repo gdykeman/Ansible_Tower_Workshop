@@ -9,30 +9,47 @@ Follow these few, simple steps and you should be good to go.  If you have troubl
 one of your instructors know and we'll get you sorted.
 
 ====
-* Login to your control node
+1. Login to your control node
 [source,bash]
 ----
 ssh <username>@<IP of your control node>
 ----
 
-* Install Ansible Core
-- ```sudo yum install -y ansible```
-
+2. Install Ansible Core
+[source,bash]
+----
+sudo yum install -y ansible
+----
 ====
 
 == Running Ad-hoc commands
 Now that you've got ansible installed, we are going to run some ad-hoc commands to help you get a feel for how Ansible works.
 
-[NOTE]
+
 ====
 * Take a look at your web node's configuration.  The ```setup``` module displays ansible facts about an endpoint.
-- ```ansible web -m setup```
+[source,bash]
+----
+ansible web -m setup
+----
 * Now, let's install Apache using the ```yum``` module
-- ```ansible web -m yum -a "name=httpd state=present" -b```
+[source,bash]
+----
+ansible web -m yum -a "name=httpd state=present" -b
+----
 * OK, Apache is installed now so let's start it up using the ```service``` module
-- ```ansible web -m service -a "name=httpd state=started" -b```
+[source,bash]
+----
+ansible web -m service -a "name=httpd state=started" -b
+----
 * Finally, let's clean up after ourselves.  First, stop the httpd service
-- ```ansible web -m service -a "name=httpd state=stopped" -b```
+[source,bash]
+----
+ansible web -m service -a "name=httpd state=stopped" -b
+----
 * Second, remove the Apache package
-- ```ansible web -m yum -a "name=httpd state=absent" -b```
+[source,bash]
+----
+ansible web -m yum -a "name=httpd state=absent" -b
+----
 ====
