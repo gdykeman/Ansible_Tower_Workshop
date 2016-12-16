@@ -8,7 +8,6 @@ Before we can use ansible to run some stuff, we've got to get Ansible installed.
 Follow these few, simple steps and you should be good to go.  If you have trouble, let
 one of your instructors know and we'll get you sorted.
 
-[NOTE]
 ====
 * Login to your control node
 - ```ssh <username>@<IP of your control node>```
