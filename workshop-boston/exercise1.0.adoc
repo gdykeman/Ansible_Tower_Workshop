@@ -10,7 +10,11 @@ one of your instructors know and we'll get you sorted.
 
 ====
 * Login to your control node
-- ```ssh <username>@<IP of your control node>```
+[source,bash]
+----
+ssh <username>@<IP of your control node>
+----
+
 * Install Ansible Core
 - ```sudo yum install -y ansible```
 
