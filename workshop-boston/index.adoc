@@ -5,7 +5,7 @@
 :date: 19-Jan-2017
 :location: Boston, MA
 :tower_url: https://ansible-tower-bos.redhatgov.io
-:source-highlighter: highlight.js
+:source-highlighter: highlightjs
 
 = Automation for Everyone
 
