@@ -1,6 +1,10 @@
 :figure-caption!:
 :become_url: http://docs.ansible.com/ansible/become.html#new-command-line-options
+:dir_url: http://docs.ansible.com/ansible/playbooks_best_practices.html
 :yum_url: http://docs.ansible.com/ansible/yum_module.html
+:copy_url: http://docs.ansible.com/ansible/copy_module.html
+:service_url: http://docs.ansible.com/ansible/service_module.html
+
 
 = Exercise 1.1 - Writing Your First playbook
 
@@ -9,8 +13,36 @@ ansible playbook.  The playbook is where you can take some of those ad-hoc comma
 and put them into a repeatable set of plays and tasks.  A playbook can have multiple plays and a play
 can have multiple tasks.  However, for our first playbook, we are only going to write one play.
 
-== Section 1 - Defining Your Play
-Let's begin by writing the beginning of the play and then understanding what each line accomplishes
+== Section 1 - Creating a Directory Structure and Files for your Playbook
+
+There is a link:{dir_url[best practice] on the preferred directory structures for playbooks.  We strongly encourage
+you to read and understand these practices as you develop your Ansible ninja skills.  That said,
+our playbook today is very basic and creating a complex structure will just confuse things.
+
+Instead, we are going to create a very simple directory structure for our playbook, and add just a couple of files to it.
+
+====
+Step 1: Create a directory called *apache_basic* in your home directory and change directories into it
+----
+% mkdir ~/apache_basic
+% cd ~/apache_basic
+----
+Step 2: Define your inventory.  Inventories are crucial to Ansible as they define remote machines on which you wish to run
+your playbook(s).  Use ```vi``` or ```vim``` to open a file called ```hosts```.  Then, add the appropriate definitions which can
+be viewed in ```~/lighbulb/inventory```.  (And yes, I *suppose* you could copy the file, but we'd rather you type it in so you can
+become familiar with the syntax)
+
+----
+[web]
+node-1 ansible_host=<IP Address of you're node-1>
+node-2 ansible_host=<IP Address of you're node-2>
+----
+Step 3: Use ```vi``` or ```vim``` to open a file called ```install_apache.yml```
+
+====
+
+== Section 2 - Defining Your Play
+Now that you are editing ```install_apache.yml```, let's begin by writing the beginning of the play and then understanding what each line accomplishes
 
 
 ====
@@ -28,7 +60,7 @@ Let's begin by writing the beginning of the play and then understanding what eac
 
 ====
 
-- ```---``` Defines YAML syntax
+- ```---``` Defines the beginning of YAML
 - ```hosts: web``` Defines which hosts in your inventory this play will run against
 - ```name: This is our first play in our first playbook``` This describes our play
 - ```become: yes``` Enables user privilege escalation.  The default is sudo, but su, pbrun, and link:{become_url}[several others] are also supported.
@@ -43,7 +75,7 @@ vars:
 ----
 
 
-== Section 2: Adding Tasks to Your Play
+== Section 3: Adding Tasks to Your Play
 Now that we've defined your play, let's add some tasks to get some things done
 
 ====
@@ -77,7 +109,35 @@ yum:
   name: httpd
   state: present
 ----
-These three lines are calling the Ansible module *yum* to install httpd.
+- These three lines are calling the Ansible module *yum* to install httpd.
 link:{yum_url}[Click here] to see all options for the yum module.
 
-*To Be Continued...*
+[source,text]
+----
+copy:
+  src: files/index.html
+  dest: /var/www/html
+----
+- These three lines are using the Ansible module *copy* to deploy the ```index.html``` file.
+The source (```src```) of the ```index.html``` file resides in a playbook directory called ```files```
+while the destination (```dest```) for that file is ```/var/www/html``` .  link:{copy_url}[Click here] to
+learn more about the *copy* module.
+
+[source,text]
+----
+  service:
+    name: httpd
+    state: started
+----
+- These three lines are using the ansible module *service* to start the httpd service.  The service module
+is the preferred way of controlling services on remote hosts.  link:{service_url}[Click here] to learn more
+about the *service* module.
+
+== Section 4: Saving your Playbook
+Now that you've completed writing your playbook, it would be a shame not to keep it.
+
+Use the ```write/quit``` method in ```vi``` or ```vim``` to save your playbook, i.e. ```Esc :wq!```
+
+
+And that should do it.  You should now have a fully written playbook called ```install_apache.yml```.
+You are ready to automate!
