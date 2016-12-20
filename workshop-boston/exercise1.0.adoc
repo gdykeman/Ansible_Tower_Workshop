@@ -1,8 +1,10 @@
 :source-highlighter: highlight.js
 
-= Exercise 1.0 - Installing Ansible Core and Ad-hoc commands
+= Exercise 1.0 - Installing Ansible Core and Running Ad-hoc commands
 
-== Installing Ansible Core
+****
+[.lead]
+Installing Ansible Core
 
 Before we can use ansible to run some stuff, we've got to get Ansible installed.
 Follow these few, simple steps and you should be good to go.  If you have trouble, let
@@ -23,7 +25,9 @@ sudo yum install -y ansible
 
 ====
 
-== Running Ad-hoc commands
+[.lead]
+Running Ad-hoc commands
+
 Now that you've got ansible installed, we are going to run some ad-hoc commands to help you get a feel for how Ansible works.
 
 
@@ -48,7 +52,7 @@ Step 4: Finally, let's clean up after ourselves.  First, stop the httpd service
 ----
 ansible web -m service -a "name=httpd state=stopped" -b
 ----
-Step 5: Second, remove the Apache package
+Step 5: Next, remove the Apache package
 [source,bash]
 ----
 ansible web -m yum -a "name=httpd state=absent" -b

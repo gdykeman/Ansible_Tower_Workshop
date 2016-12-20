@@ -1,8 +1,11 @@
-:figure-caption!:
-
 = Exercise 1.2 - Running Your Playbook
 
-[NOTE]
+****
+We are now going to run you're brand spankin' new playbook on your two web nodes.  To do this,
+ you are going to use the ```ansible-playbook``` command.
 ====
-* steps to run the playbook they just wrote
+Step 1: From your playbook directory ( ```~/apache_basic``` ), run your playbook.
+----
+ansible-playbook -i ./hosts install_apache.yml
+----
 ====

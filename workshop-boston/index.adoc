@@ -9,6 +9,7 @@
 
 = Automation for Everyone
 
+
 .Before We Get Started
 ****
 [.lead]
@@ -117,8 +118,6 @@ This document was created by and for Red Hat, Inc. It is being released under li
 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
 == Workshop Infrastructure
-image::ansible_tower_logo.png[Ansible]
-
 
 For this lab, each student are equipped with the following:
 ====

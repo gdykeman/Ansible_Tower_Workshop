@@ -1,19 +1,17 @@
 :tower_url: https://ansible-tower-bos.redhatgov.io
 
-= Setup Your Environment
-
 == Configuring your laptop to access to this workshop
 
+.Setup Your Environment
+****
 Before we can begin doing super-cool automations and such, we've got to get a few basics out of the way.
 Namely... ssh access to your EC2 nodes.
 Each of you should have received handout when you walked in the door.  This handout includes
 your account name and the IP addresses of each of your Amazon EC2 nodes.
 
 
-== Testing your environment
-
-[IMPORTANT]
-Be sure you can log in to your ec2 instances.  If you can't log in start shouting, loudly, and waving your hands!
+[.lead]
+Testing your environment
 
 [NOTE]
 .Testing your access
@@ -22,9 +20,13 @@ Be sure you can log in to your ec2 instances.  If you can't log in start shoutin
 * ssh to each one of your EC2 nodes/instances using ssh.
 * ssh <account name>@<IP address of node>
 - EXAMPLE: ```ssh bhirsch@52.62.1.8```
-
 ====
 
-=== End Result
+[IMPORTANT]
+Be sure you can log in to your ec2 instances.  If you can't log in start shouting, loudly, and waving your hands!
+
+
+[.lead]
+End Result
 
 At this point, everyone should have logged into each of your 3 nodes.  If you haven't, let us know so we can get you fixed up.

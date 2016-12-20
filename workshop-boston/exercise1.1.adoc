@@ -8,12 +8,14 @@
 
 = Exercise 1.1 - Writing Your First playbook
 
+****
 Now that you've gotten a sense of how ansible works, we are going to write our first
 ansible playbook.  The playbook is where you can take some of those ad-hoc commands you just ran
 and put them into a repeatable set of plays and tasks.  A playbook can have multiple plays and a play
 can have multiple tasks.  However, for our first playbook, we are only going to write one play.
 
-== Section 1 - Creating a Directory Structure and Files for your Playbook
+[.lead]
+Section 1 - Creating a Directory Structure and Files for your Playbook
 
 There is a link:{dir_url[best practice] on the preferred directory structures for playbooks.  We strongly encourage
 you to read and understand these practices as you develop your Ansible ninja skills.  That said,
@@ -41,7 +43,9 @@ Step 3: Use ```vi``` or ```vim``` to open a file called ```install_apache.yml```
 
 ====
 
-== Section 2 - Defining Your Play
+[.lead]
+Section 2 - Defining Your Play
+
 Now that you are editing ```install_apache.yml```, let's begin by writing the beginning of the play and then understanding what each line accomplishes
 
 
@@ -50,32 +54,20 @@ Now that you are editing ```install_apache.yml```, let's begin by writing the be
 ----
   ---
     - hosts: web
-      name: This is a play within a playbook
+      name: Install the apache web service
       become: yes
-      vars:
-        httpd_packages:
-          - httpd
-          - mod_wsgi
 ----
 
 ====
 
 - ```---``` Defines the beginning of YAML
 - ```hosts: web``` Defines which hosts in your inventory this play will run against
-- ```name: This is our first play in our first playbook``` This describes our play
+- ```name: Install the apache web service``` This describes our play
 - ```become: yes``` Enables user privilege escalation.  The default is sudo, but su, pbrun, and link:{become_url}[several others] are also supported.
-- The below are the varibles of your play.  These can help us account for slight differences between systems
-as well as be very useful for ansible conditionals and loops.
-[source,text]
-----
-vars:
-  httpd_packages:
-    - httpd
-    - mod_wsgi
-----
 
+[.lead]
+Section 3: Adding Tasks to Your Play
 
-== Section 3: Adding Tasks to Your Play
 Now that we've defined your play, let's add some tasks to get some things done
 
 ====
@@ -86,11 +78,6 @@ Now that we've defined your play, let's add some tasks to get some things done
     yum:
       name: httpd
       state: present
-
-  - name: copy index.html
-    copy:
-      src: files/index.html
-      dest: /var/www/html/
 
   - name: start httpd
     service:
@@ -114,17 +101,6 @@ link:{yum_url}[Click here] to see all options for the yum module.
 
 [source,text]
 ----
-copy:
-  src: files/index.html
-  dest: /var/www/html
-----
-- These three lines are using the Ansible module *copy* to deploy the ```index.html``` file.
-The source (```src```) of the ```index.html``` file resides in a playbook directory called ```files```
-while the destination (```dest```) for that file is ```/var/www/html``` .  link:{copy_url}[Click here] to
-learn more about the *copy* module.
-
-[source,text]
-----
   service:
     name: httpd
     state: started
@@ -133,7 +109,9 @@ learn more about the *copy* module.
 is the preferred way of controlling services on remote hosts.  link:{service_url}[Click here] to learn more
 about the *service* module.
 
-== Section 4: Saving your Playbook
+[.lead]
+Section 4: Saving your Playbook
+
 Now that you've completed writing your playbook, it would be a shame not to keep it.
 
 Use the ```write/quit``` method in ```vi``` or ```vim``` to save your playbook, i.e. ```Esc :wq!```
