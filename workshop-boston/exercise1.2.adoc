@@ -6,6 +6,19 @@ We are now going to run you're brand spankin' new playbook on your two web nodes
 ====
 Step 1: From your playbook directory ( ```~/apache_basic``` ), run your playbook.
 ----
-ansible-playbook -i ./hosts install_apache.yml
+ansible-playbook -i ./hosts -k install_apache.yml
 ----
 ====
+
+However, before you go ahead and run that command, lets take a few moments to understand the options.
+
+- *-i* This option allows you to specify the inventory file you wish to use.
+- *-k* This option prompts you for the password of the user running the playbook.
+
+OK, go ahead and run your playbook as specified in *Step 1*
+
+In standard output, you should see something that looks very similar to the following:
+
+image::stdout_1.png[caption="Figure 1: ", title="apache_basic playbook stdout"]
+
+Notice that the play and each task is named so that you can see what is being done and to which node it is being done to.
