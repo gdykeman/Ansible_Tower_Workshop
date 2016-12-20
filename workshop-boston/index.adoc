@@ -75,7 +75,6 @@ Bill hirsch - Solutions Architect
 Bill is a Solutions Architect with Red Hat focused on Northeast public sector accounts.  As an account SA, he is responsible for all Red Hat offerings,
 but has a passion for Ansible.  He has a background in Linux/Unix systems administration, management, and prior to joining Red Hat served as a Director
 of Infrastructure at the University of Pittsburgh Medical Center.
-
 Bill lives in Pittsburgh with his wife, 3 boys, and ever-shedding pets.
 
 [.lead]
@@ -117,14 +116,3 @@ in addition to his Red Hat credentials. When Matt's not architecting Clouds, he 
 This document was created by and for Red Hat, Inc. It is being released under link:https://creativecommons.org/licenses/by/4.0/[Creative Commons License 4.0]. You are free to re-use it in whole or in part.
 
 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
-== Workshop Infrastructure
-
-For this lab, each student are equipped with the following:
-====
-* 1 Control node (to run ansible plays and install Ansible Tower).  This is a Red Hat Enterprise Linux 7.2 server.
-* 2 Endpoint nodes (to execute ansible playbooks upon).
-* All three of the afore mentioned nodes are running Red Hat Enterprise Linux 7.2
-* Ansible Core 2.2
-* Ansible Tower 3.0.3
-====
