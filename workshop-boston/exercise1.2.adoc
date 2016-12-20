@@ -1,10 +1,13 @@
+:yum_url: http://docs.ansible.com/ansible/yum_module.html
+:service_url: http://docs.ansible.com/ansible/service_module.html
+
 = Exercise 1.2 - Running Your Playbook
 
 ****
 We are now going to run you're brand spankin' new playbook on your two web nodes.  To do this,
  you are going to use the ```ansible-playbook``` command.
 ====
-Step 1: From your playbook directory ( ```~/apache_basic``` ), run your playbook.
+*Step 1:* From your playbook directory ( ```~/apache_basic``` ), run your playbook.
 ----
 ansible-playbook -i ./hosts -k install_apache.yml
 ----
@@ -15,6 +18,7 @@ However, before you go ahead and run that command, lets take a few moments to un
 - *-i* This option allows you to specify the inventory file you wish to use.
 - *-k* This option prompts you for the password of the user running the playbook.
 
+---
 OK, go ahead and run your playbook as specified in *Step 1*
 
 In standard output, you should see something that looks very similar to the following:
@@ -22,3 +26,29 @@ In standard output, you should see something that looks very similar to the foll
 image::stdout_1.png[caption="Figure 1: ", title="apache_basic playbook stdout"]
 
 Notice that the play and each task is named so that you can see what is being done and to which node it is being done to.
+You also may notice a task in there that you didn't write <cough> ```setup``` <cough>.  This is because the ```setup``` module
+runs by default.  To turn if off, you can specify link:{gather_facts-url}[gather_facts: false] in your play definition like this:
+[source,yaml]
+----
+  ---
+    - hosts: web
+      name: Install the apache web service
+      become: yes
+      gather_facts: false
+----
+
+*Step 2:* Remove Apache
+
+OK, for the next several minutes or as much time as we can afford, we want to to experiment a little.
+We would like you to reverse what you've done, i.e. uninstall apache on your web nodes.
+So, go ahead and edit your playbook and then when your finished, rerun it as specified in *Step 1*.
+For this exercise we aren't going to show you line by line, but we will give you a few hints.
+
+
+- If ```present``` makes sure a package is installed, then what option ensures it is removed?  Er... starts with an *ab*, ends with a *sent*
+- If ```started``` makes sure a service is started, then what option ensures it is stopped?
+
+Feel free to browse the help pages to see a list of all options.
+
+- link:{yum_url}[Ansible yum module]
+- link:{service_url}[Ansible service module]

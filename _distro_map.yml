@@ -1,10 +1,10 @@
 ---
 
 red-hat-public-sector:
-  name: Ansible Tower Workshops
+  name: Ansible Workshops
   author: Documentation Project <bsollar@redhat.com>
   site: ansible tower
-  site_name: Ansible Tower
+  site_name: Ansible 
   site_url: https://docs.redhatgov.io/
   branches:
     master:
