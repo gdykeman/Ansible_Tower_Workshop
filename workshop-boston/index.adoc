@@ -5,7 +5,8 @@
 :date: 19-Jan-2017
 :location: Boston, MA
 :tower_url: https://ansible-tower-bos.redhatgov.io
-:source-highlighter: pygments
+:source-highlighter: highlight.js
+:source-language: yaml
 
 = Automation for Everyone
 
@@ -41,7 +42,7 @@ ansible web -m setup
 ----
 * Step 2: Edit this file in this specific way
 
-[source,yaml]
+[source]
 ----
 ---
   - hosts: web

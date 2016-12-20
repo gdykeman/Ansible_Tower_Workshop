@@ -8,6 +8,7 @@
 
 = Exercise 1.1 - Writing Your First playbook
 
+
 ****
 Now that you've gotten a sense of how ansible works, we are going to write our first
 ansible playbook.  The playbook is where you can take some of those ad-hoc commands you just ran
@@ -90,6 +91,9 @@ Now that we've defined your play, let's add some tasks to get some things done
 - ```tasks:``` This denotes that one or more tasks are about to be defined
 - ```- name:``` Each task requires a name which will print to standard output when you run your playbook.
 Therefore, give your tasks a name that is short, sweet, and to the point
+
+---
+
 [source,text]
 ----
 yum:
@@ -99,15 +103,19 @@ yum:
 - These three lines are calling the Ansible module *yum* to install httpd.
 link:{yum_url}[Click here] to see all options for the yum module.
 
+---
+
 [source,text]
 ----
-  service:
-    name: httpd
-    state: started
+service:
+  name: httpd
+  state: started
 ----
-- These three lines are using the ansible module *service* to start the httpd service.  The service module
+- The next few lines are using the ansible module *service* to start the httpd service.  The service module
 is the preferred way of controlling services on remote hosts.  link:{service_url}[Click here] to learn more
 about the *service* module.
+
+---
 
 [.lead]
 Section 4: Saving your Playbook
