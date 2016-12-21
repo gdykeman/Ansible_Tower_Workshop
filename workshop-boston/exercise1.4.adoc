@@ -93,8 +93,9 @@ a|
 |CACHE TIMEOUT (SECONDS)|120
 |===
 image::at_project_detail.png[caption: "Figure 6: ",title="Project Entry"]
-*Step 4:* Select SAVE
-image::at_save.png[]
+
+image::at_save.png[Save,float="right"] *Step 4:* Select SAVE
+
 ====
 
 [.lead]
