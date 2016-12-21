@@ -94,7 +94,8 @@ a|
 |===
 image::at_project_detail.png[caption: "Figure 6: ",title="Project Entry"]
 
-image::at_save.png[Save,role="right"]
+[.right.text-center]
+image::at_save.png[Save]
 *Step 4:* Select SAVE
 
 ====
