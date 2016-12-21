@@ -27,25 +27,26 @@ Logging into Tower and Installing the License Key
 ====
 *Step 1:* To log in, use the username `admin` and and the password `ansibleWS`.
 
-image::ansible-lab-figure01-logon-screen.png[caption="Figure 2: ", title="Ansible Tower Login Screen"]
+image::ansible-lab-figure01-logon-screen.png[caption="Figure 3: ", title="Ansible Tower Login Screen"]
 
 
 *Step 2:* In a seperate browser tab, download your license key by browsing to {license_url} +
 *Step 3:* Upload your recently download (like a second ago) license file into Tower.
 
-<insert image>
+image::stdout_1.png[caption="Figure 4: ", title="License Upload Prompt"]
 ====
 
 [.lead]
 Creating a Credential
 
-Credentials are used by Tower to access remote nodes.
-Just like using ssh on the command line, Tower needs to know
-how it will login to remote nodes to run playbooks.  Credentials is how it does that.
+Credentials are utilized by Tower for authentication when launching jobs against machines,
+synchronizing with inventory sources, and importing project content from a version control system.
 ====
-*Step 1:* Select the gear icon <insert icon>  +
+*Step 1:* Select the gear icon
+image::at_gear.png[title="gear icon"]
 *Step 2:* Select CREDENTIALS +
-*Step 3:* Click on ADD <insert icon> +
+*Step 3:* Click on ADD +
+image::at_add.png[title="add icon"]
 *Step 4:* Complete the form using the following entries +
 
 |===
@@ -57,19 +58,24 @@ how it will login to remote nodes to run playbooks.  Credentials is how it does 
 |PASSWORD| Your Workshop Password
 |PRIVILEGE ESCALATION|Sudo
 |===
-<insert image> +
+image::at_cred_detail.png[caption: "Figure 5: ",title="Credential Entry"]
 
 *Step 5:* Select SAVE
+image::at_save.png[]
 ====
 
 [.lead]
 Creating a Project
 
-A Project in tower defines the source of your playbooks.  These sources can one of several soruce
-control management types including git, subversion, mecurial, or manual.
+A Project is a logical collection of Ansible playbooks, represented in Tower.
+You can manage playbooks and playbook directories by either placing them manually
+under the Project Base Path on your Tower server, or by placing your playbooks into
+a source code management (SCM) system supported by Tower, including Git, Subversion, and Mercurial.
 ====
-*Step 1:* Click on PROJECTS <insert icon> +
-*Step 2:* Select ADD <insert icon> +
+*Step 1:* Click on PROJECTS +
+image::at_projects_icon.png[]
+*Step 2:* Select ADD +
+image::at_add.png[]
 *Step 3:* Complete the form using the following entries +
 
 |===
@@ -78,11 +84,17 @@ control management types including git, subversion, mecurial, or manual.
 |ORGANIZATION|Default
 |SCM TYPE|Git
 |SCM URL| https://github.com/gdykeman/ansible-lightbulb
-|SCM UPDATE OPTIONS|Clean, Delete on Update, Update on Launch
+|SCM UPDATE OPTIONS
+a|
+
+- [*] Clean
+- [*] Delete on Update
+- [*] Update on Launch
 |CACHE TIMEOUT (SECONDS)|120
 |===
-<insert image> +
+image::at_project_detail.png[caption: "Figure 6: ",title="Project Entry"]
 *Step 4:* Select SAVE
+image::at_save.png[]
 ====
 
 [.lead]
@@ -121,8 +133,13 @@ You should see output similar to the following: +
 <insert image>
 ====
 
-[.lead]
-End Result
+Feel free to browse your inventory in Tower.  You should now notice that the inventory has been populated with Groups and that
+each of those groups contain hosts.
+
+<insert image>
+
+
+=== End Result
 
 At this point, we are doing with our basic configuration of Ansible Tower.  In exercise 1.5, we will be soley focused on
 creating and running a job template so you can see Tower in action.

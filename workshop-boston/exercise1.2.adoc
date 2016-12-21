@@ -30,6 +30,7 @@ You also may notice a task in there that you didn't write;  <cough> ```setup``` 
 runs by default.  To turn if off, you can specify link:{gather_facts-url}[gather_facts: false] in your play definition like this:
 [source,yaml]
 ----
+   ---
     - hosts: web
       name: Install the apache web service
       become: yes

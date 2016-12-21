@@ -2,3 +2,69 @@
 :license_url: http://ansible-workshop-bos.redhatgov.io/wslic.txt
 
 = Exercise 1.5 - Creating and Running a Job Template
+
+A job template is a definition and set of parameters for running an Ansible job.
+Job templates are useful to execute the same job many times.
+
+[.lead]
+Creating a Job Template
+
+====
+*Step 1:* Select JOB TEMPLATES <insert icon>  +
+*Step 2:* Click on ADD <insert icon> +
+*Step 3:* Complete the form using the following entries +
+
+|===
+|NAME |Apache Basic Job Template
+|DESCRIPTION|Template for the apache-basic-playbook
+|JOB TYPE|Run
+|INVENTORY|Ansible Workshop Inventory
+|PROJECT|Ansible Workshop Project
+|PLAYBOOK|example/apache-basic-playbook/site.yml
+|MACHINE CREDENTIAL|Ansible Workshop Credential
+|LIMIT|web
+|OPTIONS
+a|
+- [*] Enable Privilege Escalation
+|===
+<insert image> +
+
+*Step 4:* Select ADD SURVEY <insert icon> +
+*Step 5:* Complete the survey form with following values
+
+|===
+|PROMPT|Please enter a test message for your new website
+|DESCRIPTION|Website test message prompt
+|ANSWER VARIABLE NAME|apache_test_message
+|ANSWER TYPE|Text
+|MINIMUM/MAXIMUM LENGTH| Use the defaults
+|DEFAULT ANSWER| Be creative, keep it clean, we're all professionals here
+|===
+
+*Step 6:* Select ADD <insert icon> +
+*Step 7:* Select SAVE <insert icon> +
+
+====
+
+[.lead]
+Running a Job Template
+
+Now that you've sucessfully creating your Job Template, you are ready to launch it.
+Once you do, you will be redirected to a job screen which is refreshing in realtime
+showing you the status of the job.
+
+====
+*Step 1:* Select JOB TEMPLATES <insert icon>.
+[NOTE]
+Alternatively, if you haven't navigated away from
+the job templates creation page, you can scroll down to see all existing job templates
+
+*Step 2:* Click on the rocketship icon <insert icon> for the *Apache Basic Job Template* +
+*Step 3:* When prompted, enter your desired test message +
+*Step 4:* Select LAUNCH <insert icon> +
+*Step 5:* Sit back, watch the magic happen +
+<insert image>
+*Step 6:* Once your job is sucessful, navigate to your new website +
+----
+http://<IP_of_node-1_or_node-2>
+----

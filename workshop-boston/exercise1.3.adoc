@@ -71,6 +71,6 @@ You can access Tower at http://<IP-of-your-control-node>
 
 === Ensuring Installation Success
 
-You know you were successful if you are able to browse to your Ansible Tower's url and get something like this
+You know you were successful if you are able to browse to your Ansible Tower's url (_control node's IP address_) and get something like this
 
-image::ansible-lab-figure01-logon-screen.png[caption="Figure 1: ", title="Ansible Tower Login Screen"]
+image::ansible-lab-figure01-logon-screen.png[caption="Figure 2: ", title="Ansible Tower Login Screen"]
