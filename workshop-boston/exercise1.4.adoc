@@ -42,9 +42,12 @@ Creating a Credential
 Credentials are utilized by Tower for authentication when launching jobs against machines,
 synchronizing with inventory sources, and importing project content from a version control system.
 ====
-*Step 1:* Select the gear icon image:at_gear.png[Gear] +
-*Step 2:* Select CREDENTIALS image:at_cred_icon[Cred] +
-*Step 3:* Click on ADD image:at_add.png[Add] +
+*Step 1:* Select the gear icon image:at_gear.png[Gear,25,25] +
+
+*Step 2:* Select CREDENTIALS +
+
+*Step 3:* Click on ADD image:at_add.png[Add,35,25] +
+
 *Step 4:* Complete the form using the following entries +
 
 |===
