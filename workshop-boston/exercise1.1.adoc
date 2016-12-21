@@ -2,7 +2,6 @@
 :become_url: http://docs.ansible.com/ansible/become.html#new-command-line-options
 :dir_url: http://docs.ansible.com/ansible/playbooks_best_practices.html
 :yum_url: http://docs.ansible.com/ansible/yum_module.html
-:copy_url: http://docs.ansible.com/ansible/copy_module.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
 
 
@@ -47,7 +46,7 @@ Step 3: Use ```vi``` or ```vim``` to open a file called ```install_apache.yml```
 [.lead]
 Section 2 - Defining Your Play
 
-Now that you are editing ```install_apache.yml```, let's begin by writing the beginning of the play and then understanding what each line accomplishes
+Now that you are editing ```install_apache.yml```, let's begin by defining the play and then understanding what each line accomplishes
 
 
 ====
@@ -62,7 +61,7 @@ Now that you are editing ```install_apache.yml```, let's begin by writing the be
 ====
 
 - ```---``` Defines the beginning of YAML
-- ```hosts: web``` Defines which hosts in your inventory this play will run against
+- ```hosts: web``` Defines which host group in your inventory on which this play will run against
 - ```name: Install the apache web service``` This describes our play
 - ```become: yes``` Enables user privilege escalation.  The default is sudo, but su, pbrun, and link:{become_url}[several others] are also supported.
 

@@ -80,7 +80,10 @@ Bill lives in Pittsburgh with his wife, 3 boys, and ever-shedding pets.
 [.lead]
 Gerald Dykeman - Domain Architect - Ansible
 
-Gerald is a Domain Architect who specializes in all things Ansible Core and Tower.
+Gerald joined Red Hat in August 2016 as a Domain Architect.  His focus is on all things Ansible Core and Tower as well
+as specializing in Ansible's network automation capabilities.
+Gerald has a networking background, previously working with a range of solutions from Small Business to
+Service Provider.  In the last couple years before joining Red Hat, he focused on using Ansible to automate OpenStack solutions.
 
 [.lead]
 Skip Paul - Manager, Solution Architecture

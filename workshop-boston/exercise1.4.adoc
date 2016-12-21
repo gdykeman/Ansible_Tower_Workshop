@@ -1,14 +1,128 @@
 :tower_url: https://your-control-node-ip-address
-:license_url: http://ansible-workshop-bos.redhatgov.io/wslic.txt
+:license_url: http://ansible-workshop-bos.redhatgov.io/ansible-license.json
 
 = Exercise 1.4 - Configuring Ansible Tower
 
-In this exercise, we are going to get Ansible Tower configured
-
+In this exercise, we are going to configure Tower so that we can run a playbook.
 [NOTE]
 ====
-* Walk them through each step of configuration for
-* credentials
-* projects
-* inventory
+
+[.lead]
+The Tower UI
+
+There are a number of contructs in the Ansible Tower UI that enable multi-tenancy, notifications, scheduling, etc.
+However, we are only going to focus on a few of the key contructs that are required for this workshop today.
+
+
+* Credentials
+* Projects
+* Inventory
 * Job Template
+====
+
+
+[.lead]
+Logging into Tower and Installing the License Key
+
+====
+*Step 1:* To log in, use the username `admin` and and the password `ansibleWS`.
+
+image::ansible-lab-figure01-logon-screen.png[caption="Figure 2: ", title="Ansible Tower Login Screen"]
+
+
+*Step 2:* In a seperate browser tab, download your license key by browsing to {license_url} +
+*Step 3:* Upload your recently download (like a second ago) license file into Tower.
+
+<insert image>
+====
+
+[.lead]
+Creating a Credential
+
+Credentials are used by Tower to access remote nodes.
+Just like using ssh on the command line, Tower needs to know
+how it will login to remote nodes to run playbooks.  Credentials is how it does that.
+====
+*Step 1:* Select the gear icon <insert icon>  +
+*Step 2:* Select CREDENTIALS +
+*Step 3:* Click on ADD <insert icon> +
+*Step 4:* Complete the form using the following entries +
+
+|===
+|NAME |Ansible Workshop Credential
+|DESCRIPTION|Machine credential for run job templates during workshop
+|ORGANIZATION|Default
+|TYPE|Machine
+|USERNAME| Your Workshop Username
+|PASSWORD| Your Workshop Password
+|PRIVILEGE ESCALATION|Sudo
+|===
+<insert image> +
+
+*Step 5:* Select SAVE
+====
+
+[.lead]
+Creating a Project
+
+A Project in tower defines the source of your playbooks.  These sources can one of several soruce
+control management types including git, subversion, mecurial, or manual.
+====
+*Step 1:* Click on PROJECTS <insert icon> +
+*Step 2:* Select ADD <insert icon> +
+*Step 3:* Complete the form using the following entries +
+
+|===
+|NAME |Ansible Workshop Project
+|DESCRIPTION|Boston workshop playbooks
+|ORGANIZATION|Default
+|SCM TYPE|Git
+|SCM URL| https://github.com/gdykeman/ansible-lightbulb
+|SCM UPDATE OPTIONS|Clean, Delete on Update, Update on Launch
+|CACHE TIMEOUT (SECONDS)|120
+|===
+<insert image> +
+*Step 4:* Select SAVE
+====
+
+[.lead]
+Creating a Inventory
+
+An inventory is a collection of hosts against which jobs may be launched.
+Inventories are divided into groups and these groups contain the actual hosts.
+Groups may be sourced manually, by entering host names into Tower, or from one
+of Ansible Tower’s supported cloud providers.
+
+An Inventory can also be imported into Tower using the ```tower-manage``` command
+and this is how we are going to add an inventory for this workshop.
+
+====
+*Step 1:* Click on INVENTORIES <insert icon> +
+*Step 2:* Select ADD <insert icon> +
+*Step 3:* Complete the form using the following entries +
+
+|===
+|NAME |Ansible Workshop Inventory
+|DESCRIPTION|Boston workshop hosts
+|ORGANIZATION|Default
+|===
+<insert image> +
+*Step 4:* Select SAVE +
+*Step 5:* Using ssh, login to your control node +
+----
+ssh <username>@<IP_Address_of_your_control_node>
+----
+*Step 6:* Use the ```tower-manage``` command to import an existing inventory.  (_Be sure to replace <username> with your actual username_)
+----
+sudo tower-manage inventory_import --source=/home/<username>/lightbulb/inventory --inventory-name="Ansible Workshop Inventory"
+----
+
+You should see output similar to the following: +
+<insert image>
+====
+
+[.lead]
+End Result
+
+At this point, we are doing with our basic configuration of Ansible Tower.  In exercise 1.5, we will be soley focused on
+creating and running a job template so you can see Tower in action.

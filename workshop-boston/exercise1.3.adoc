@@ -1,5 +1,5 @@
 :tower_url: https://your-control-node-ip-address
-:license_url: http://ansible-workshop-bos.redhatgov.io/wslic.txt
+:license_url: http://ansible-workshop-bos.redhatgov.io/ansible-license.json
 
 = Exercise 1.3 - Installing Ansible Tower
 
@@ -60,60 +60,17 @@ pg_password='ansibleWS'
 Step 8: run the Ansible Tower setup script
 [source,bash]
 ----
-/tmp/ansible-tower-setup-<version number>/setup.sh
-----
-Step 9: Download your license key
-[source,bash]
-----
-curl -O {license_url}
+sudo /tmp/ansible-tower-setup-<version number>/setup.sh
 ----
 ====
 
 === End Result
 
 At this point, your Ansible Tower installation should be complete.
-You can access Tower at {tower_url}
+You can access Tower at http://<IP-of-your-control-node>
 
-=== First Login
+=== Ensuring Installation Success
 
 You know you were successful if you are able to browse to your Ansible Tower's url and get something like this
 
 image::ansible-lab-figure01-logon-screen.png[caption="Figure 1: ", title="Ansible Tower Login Screen"]
-
-[NOTE]
-.Login and Password
-====
-*NOTE* To log in, use `student#`, where `#` is the student number that you were given. The password is the same as the login.
-====
-
-== The Tower UI
-
-There are a number of contructs in the Ansible Tower UI that enable multi-tenancy, notifications, scheduling, etc.
-However, we are only going to focus on a few of these key contructs that are required for this workshop today.
-These are in bold below.
-
-=== Settings
-
-The `settings` menu (the little gear in the top right corner) is where you do a lot of your initial work to configure Ansible Tower. Within it are 8 options (9 if you include 'About')
-
-We won't need to cover them all, but a few are key for us to be able to effectively use Tower today.
-
-. Settings Options
-* Organizations - Create Logical Organizations within Tower
-* *Users - Manage Users, including their permissions*
-* Teams - Create and manage Teams
-* *Credentials - Manage multiple types of credentials (more on that later)*
-* Management Jobs - cleaning up the Tower Database
-* Inventory Scripts - Maintain dynamic inventory from your various cloud providers
-* Notifications - Manage various kinds of notifications like Email, SMS, and Slack
-* *View your License Info*
-* About Tower
-
-=== Configuration
-
-To sucessfully run our playbooks from Tower, we'll need to make implement a few configurations.
-The next few exercises will walk us through the configurations of:
-
-* Projects
-* Inventory
-* Job Templates

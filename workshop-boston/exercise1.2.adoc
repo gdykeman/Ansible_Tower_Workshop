@@ -26,11 +26,10 @@ In standard output, you should see something that looks very similar to the foll
 image::stdout_1.png[caption="Figure 1: ", title="apache_basic playbook stdout"]
 
 Notice that the play and each task is named so that you can see what is being done and to which node it is being done to.
-You also may notice a task in there that you didn't write <cough> ```setup``` <cough>.  This is because the ```setup``` module
+You also may notice a task in there that you didn't write;  <cough> ```setup``` <cough>.  This is because the ```setup``` module
 runs by default.  To turn if off, you can specify link:{gather_facts-url}[gather_facts: false] in your play definition like this:
 [source,yaml]
 ----
-  ---
     - hosts: web
       name: Install the apache web service
       become: yes
@@ -40,13 +39,17 @@ runs by default.  To turn if off, you can specify link:{gather_facts-url}[gather
 *Step 2:* Remove Apache
 
 OK, for the next several minutes or as much time as we can afford, we want to to experiment a little.
-We would like you to reverse what you've done, i.e. uninstall apache on your web nodes.
+We would like you to reverse what you've done, i.e. stop and uninstall apache on your web nodes.
 So, go ahead and edit your playbook and then when your finished, rerun it as specified in *Step 1*.
 For this exercise we aren't going to show you line by line, but we will give you a few hints.
 
-
-- If ```present``` makes sure a package is installed, then what option ensures it is removed?  Er... starts with an *ab*, ends with a *sent*
+[NOTE]
+====
+- If your first task in the playbook was to install httpd and the second task was to start the service, which order do you think
+those tasks should be in now?
 - If ```started``` makes sure a service is started, then what option ensures it is stopped?
+- If ```present``` makes sure a package is installed, then what option ensures it is removed?  Er... starts with an *ab*, ends with a *sent*
+====
 
 Feel free to browse the help pages to see a list of all options.
 

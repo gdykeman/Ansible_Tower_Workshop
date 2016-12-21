@@ -1,34 +1,14 @@
 :source-highlighter: highlight.js
 
-= Exercise 1.0 - Installing Ansible Core and Running Ad-hoc commands
+= Exercise 1.0 - Running Ad-hoc commands
 
 ****
-[.lead]
-Installing Ansible Core
 
-Before we can use ansible to run some stuff, we've got to get Ansible installed.
-Follow these few, simple steps and you should be good to go.  If you have trouble, let
-one of your instructors know and we'll get you sorted.
 
-====
-
-Step 1: Login to your control node
-[source,bash]
-----
-ssh <username>@<IP of your control node>
-----
-Step 2: Install Ansible Core
-[source,bash]
-----
-sudo yum install -y ansible
-----
-
-====
-
-[.lead]
-Running Ad-hoc commands
-
-Now that you've got ansible installed, we are going to run some ad-hoc commands to help you get a feel for how Ansible works.
+For our first exercise, we are going to run some ad-hoc commands to help you get
+a feel for how Ansible works.  Ansible Ad-Hoc commands enable you to perform tasks
+on remote nodes without having to write a playbook.  They are very useful when you
+simply need to do one or two things quickly and often, to many remote nodes.
 
 
 ====
