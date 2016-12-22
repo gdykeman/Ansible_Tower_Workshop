@@ -66,8 +66,10 @@ the job templates creation page, you can scroll down to see all existing job tem
 
 *Step 2:* Click on the rocketship icon image:at_launch_icon.png[Add,35,25] for the *Apache Basic Job Template* +
 *Step 3:* When prompted, enter your desired test message +
+
 image::at_survey_prompt.png[caption="Figure 13: ",title="Survey Prompt"]
-*Step 4:* Select LAUNCH +
+
+*Step 4:* Select LAUNCH image:at_survey_launch[SL,35,25] +
 *Step 5:* Sit back, watch the magic happen +
 
 One of the first things you will notice is the summary section.  This gives you details about
