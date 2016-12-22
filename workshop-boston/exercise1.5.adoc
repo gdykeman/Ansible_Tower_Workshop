@@ -13,7 +13,7 @@ Creating a Job Template
 ====
 *Step 1:* Select JOB TEMPLATES +
 *Step 2:* Click on ADD <insert     image:at_add.png[Add,35,25] +
-*Step 3:* Complete the form using the following entries +
+*Step 3:* Complete the form using the following values +
 
 |===
 |NAME |Apache Basic Job Template
@@ -33,7 +33,7 @@ image::at_jt_detail.png[caption="Figure 11: ",title="Job Template Form",link="{i
 
 
 *Step 4:* Select ADD SURVEY image:at_addsurvey.png[Add,35,25] +
-*Step 5:* Complete the survey form with following values
+*Step 5:* Complete the survey form with following values +
 
 |===
 |PROMPT|Please enter a test message for your new website
@@ -44,7 +44,7 @@ image::at_jt_detail.png[caption="Figure 11: ",title="Job Template Form",link="{i
 |DEFAULT ANSWER| Be creative, keep it clean, we're all professionals here
 |===
 
-*Step 6:* Select ADD image:at_add.png[Add,35,25]+
+*Step 6:* Select ADD image:at_add.png[Add,35,25] +
 *Step 7:* Select SAVE image:at_save.png[Add,35,25] +
 
 ====
@@ -63,27 +63,34 @@ Alternatively, if you haven't navigated away from
 the job templates creation page, you can scroll down to see all existing job templates
 
 *Step 2:* Click on the rocketship icon image:at_launch_icon.png[Add,35,25] for the *Apache Basic Job Template* +
-*Step 3:* When prompted, enter your desired test message +
-*Step 4:* Select LAUNCH image:button_launch.png[Add,35,25] +
+*Step 3:* When prompted, enter your desired test message
+image::at_survey_prompt.png[caption="Figure 12: ",title="Survey Prompt"]
+*Step 4:* Select LAUNCH +
 *Step 5:* Sit back, watch the magic happen +
 
 One of the first things you will notice is the summary section.  This gives you details about
-your job such as who launched it, what playbook it's running, what the status is, i.e. pending, running, or complete.
-image::at_job_status.png[caption="Figure 12: ",title="Job Status",link="{image_links}/at_job_status.png"]
+your job such as who launched it, what playbook it's running, what the status is, i.e. pending, running, or complete. +
 
-Scrolling down, you will be able to see details on the play and each task in the playbook.
-image::at_job_tasklist.png[caption="Figure 13: ",title="Play and Task Details",link="{image_links}/at_job_tasklist.png"]
+image::at_job_status.png[caption="Figure 13: ",title="Job Status",link="{image_links}/at_job_status.png"]
+
+Scrolling down, you will be able to see details on the play and each task in the playbook. +
+
+image::at_job_tasklist.png[caption="Figure 14: ",title="Play and Task Details",link="{image_links}/at_job_tasklist.png"]
 
 To the right, you can view standard output; the same way you could if you were running Ansible Core
-from the command line.
-image::at_job_stdout.png[caption="Figure 14: ",title="Job Standard Output",link="{image_links}/at_job_stdout.png"]
+from the command line. +
+
+image::at_job_stdout.png[caption="Figure 15: ",title="Job Standard Output",link="{image_links}/at_job_stdout.png"]
+
 *Step 6:* Once your job is sucessful, navigate to your new website +
 ----
 http://<IP_of_node-1_or_node-2>
 ----
-If all went well, you should see something like this, but with your own custom message of course.
+If all went well, you should see something like this, but with your own custom message of course. +
 
-image::at_web_tm_2.png[caption="Figure 15: ",title="New Website with Personalized Test Message"]
+image::at_web_tm.png[caption="Figure 16: ",title="New Website with Personalized Test Message"]
+
+====
 
 == End Result
 At this point in the workshop, you've experienced the core functionality of Ansible Tower.  But wait... there's more!
