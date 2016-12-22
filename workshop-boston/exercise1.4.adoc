@@ -1,5 +1,6 @@
 :tower_url: https://your-control-node-ip-address
 :license_url: http://ansible-workshop-bos.redhatgov.io/ansible-license.json
+:image_links: https://s3.amazonaws.com/ansible-workshop-bos.redhatgov.io/_images
 
 = Exercise 1.4 - Configuring Ansible Tower
 
@@ -59,7 +60,7 @@ synchronizing with inventory sources, and importing project content from a versi
 |PASSWORD| Your Workshop Password
 |PRIVILEGE ESCALATION|Sudo
 |===
-image::at_cred_detail.png[Cred_Detail, 600,600,caption="Figure 5: ",title="Adding a Credential", link="https://s3.amazonaws.com/ansible-workshop-bos.redhatgov.io/_images/at_cred_detail.png"]
+image::at_cred_detail.png[Cred_Detail, 600,600,caption="Figure 5: ",title="Adding a Credential", link="{image_links}/at_cred_detail.png"]
 
 *Step 5:* Select SAVE     image:at_save.png[Save,35,25] +
 ====
