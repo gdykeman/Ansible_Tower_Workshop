@@ -59,7 +59,7 @@ synchronizing with inventory sources, and importing project content from a versi
 |PASSWORD| Your Workshop Password
 |PRIVILEGE ESCALATION|Sudo
 |===
-image::at_cred_detail.png[Cred_Detail, 600,600,caption="Figure 5: ",title="Adding a Credential"]
+image::at_cred_detail.png[Cred_Detail, 600,600,caption="Figure 5: ",title="Adding a Credential", link="https://s3.amazonaws.com/ansible-workshop-bos.redhatgov.io/_images/at_cred_detail.png"]
 
 *Step 5:* Select SAVE     image:at_save.png[Save,35,25] +
 ====
