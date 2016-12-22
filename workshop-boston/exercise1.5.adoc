@@ -1,5 +1,6 @@
 :tower_url: https://your-control-node-ip-address
 :license_url: http://ansible-workshop-bos.redhatgov.io/wslic.txt
+:image_links: https://s3.amazonaws.com/ansible-workshop-bos.redhatgov.io/_images
 
 = Exercise 1.5 - Creating and Running a Job Template
 
@@ -28,7 +29,7 @@ a|
 - [*] Enable Privilege Escalation
 |===
 
-image::at_jt_detail.png[caption="Figure 11: ",title="Job Template Form"]
+image::at_jt_detail.png[caption="Figure 11: ",title="Job Template Form",link="{image_links}/at_jt_detail.png"]
 
 
 *Step 4:* Select ADD SURVEY image:at_addsurvey.png[Add,35,25] +
@@ -68,15 +69,23 @@ the job templates creation page, you can scroll down to see all existing job tem
 
 One of the first things you will notice is the summary section.  This gives you details about
 your job such as who launched it, what playbook it's running, what the status is, i.e. pending, running, or complete.
-image::at_job_status.png[caption="Figure 12: ",title="Job Status"]
+image::at_job_status.png[caption="Figure 12: ",title="Job Status",link="{image_links}/at_job_status.png"]
 
 Scrolling down, you will be able to see details on the play and each task in the playbook.
-image::at_job_tasklist.png[caption="Figure 13: ",title="Play and Task Details"]
+image::at_job_tasklist.png[caption="Figure 13: ",title="Play and Task Details",link="{image_links}/at_job_tasklist.png"]
 
 To the right, you can view standard output; the same way you could if you were running Ansible Core
 from the command line.
-image::at_job_stdout.png[caption="Figure 14: ",title="Job Standard Output"]
+image::at_job_stdout.png[caption="Figure 14: ",title="Job Standard Output",link="{image_links}/at_job_stdout.png"]
 *Step 6:* Once your job is sucessful, navigate to your new website +
 ----
 http://<IP_of_node-1_or_node-2>
 ----
+If all went well, you should see something like this, but with your own custom message of course.
+
+image::at_web_tm_2.png[caption="Figure 15: ",title="New Website with Personalized Test Message"]
+
+== End Result
+At this point in the workshop, you've experienced the core functionality of Ansible Tower.  But wait... there's more!
+You've just begun to explore the possibilities of Ansible Core and Tower.  Take a look at the resources page in this guide
+to explore some more features.
