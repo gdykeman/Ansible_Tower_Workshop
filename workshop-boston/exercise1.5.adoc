@@ -85,7 +85,7 @@ image::at_survey_prompt.png[caption="Figure 13: ",title="Survey Prompt"]
 
 ---
 
-*Step 4:* Select LAUNCH image:at_survey_launch[SurveyL,35,25] +
+*Step 4:* Select LAUNCH image:at_survey_launch.png[SurveyL,35,25] +
 
 *Step 5:* Sit back, watch the magic happen +
 
