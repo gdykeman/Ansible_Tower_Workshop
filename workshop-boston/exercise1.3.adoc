@@ -37,7 +37,7 @@ Step 6: Using an editor of your choice, open the inventory file
 vi /tmp/ansible-tower-setup-<version number>/inventory
 ----
 Step 7: fill a few variables out in an inventory file: ```admin_password, redis_password, pg_password```
-[source,yaml]
+[source,bash]
 ----
 [primary]
 localhost ansible_connection=local
