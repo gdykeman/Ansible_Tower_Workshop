@@ -33,15 +33,19 @@ Logging into Tower and Installing the License Key
 image::ansible-lab-figure01-logon-screen.png[caption="Figure 3: ", title="Ansible Tower Login Screen"]
 
 ---
-
-*Step 2:* In a seperate browser tab, download your license key by browsing to {license_url} +
-*Step 3:* Upload your recently download (like a second ago) license file into Tower.
+As soon as you login, you will prompted to request a license or browse for an existing license file
 
 ---
 
 image::at_lic_prompt.png[caption="Figure 4: ", title="Uploading a License"]
 
 ---
+
+*Step 2:* In a seperate browser tab, download your license key by browsing to {license_url} +
+*Step 3:* Back in the Tower UI, choose BROWSE image:at_browse.png[LicB,35,25] and upload your
+recently downloaded license file into Tower. +
+*Step 4:* Select "_I agree to the End User License Agreement_" +
+*Step 5:* Click on SUBMIT image:at_submit.png[Sub,35,25] +
 
 ====
 
