@@ -3,6 +3,8 @@
 
 = Exercise 1.2 - Running Your Playbook
 
+---
+
 ****
 We are now going to run you're brand spankin' new playbook on your two web nodes.  To do this,
  you are going to use the ```ansible-playbook``` command.

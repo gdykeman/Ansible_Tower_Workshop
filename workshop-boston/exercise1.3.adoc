@@ -3,6 +3,8 @@
 
 = Exercise 1.3 - Installing Ansible Tower
 
+---
+
 In this exercise, we are going to get Ansible Tower installed on your control node
 
 ====

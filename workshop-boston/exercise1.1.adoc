@@ -8,6 +8,7 @@
 
 = Exercise 1.1 - Writing Your First playbook
 
+---
 
 ****
 Now that you've gotten a sense of how ansible works, we are going to write our first

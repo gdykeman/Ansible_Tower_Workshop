@@ -5,6 +5,7 @@
 
 = Exercise 1.4 - Configuring Ansible Tower
 
+---
 In this exercise, we are going to configure Tower so that we can run a playbook.
 [NOTE]
 ====

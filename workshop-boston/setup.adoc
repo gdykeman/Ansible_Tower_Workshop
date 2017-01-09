@@ -2,6 +2,7 @@
 
 = Workshop Lab Setup
 
+---
 ****
 [IMPORTANT]
 Today's workshop infrastructure is being run in Amazon EC2. +
