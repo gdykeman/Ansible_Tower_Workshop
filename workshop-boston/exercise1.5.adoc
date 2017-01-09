@@ -23,7 +23,7 @@ Creating a Job Template
 |JOB TYPE|Run
 |INVENTORY|Ansible Workshop Inventory
 |PROJECT|Ansible Workshop Project
-|PLAYBOOK|example/apache-basic-playbook/site.yml
+|PLAYBOOK|examples/apache-basic-playbook/site.yml
 |MACHINE CREDENTIAL|Ansible Workshop Credential
 |LIMIT|web
 |OPTIONS

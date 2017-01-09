@@ -1,6 +1,7 @@
 :tower_url: https://your-control-node-ip-address
 :license_url: http://ansible-workshop-bos.redhatgov.io/ansible-license.json
 :image_links: https://s3.amazonaws.com/ansible-workshop-bos.redhatgov.io/_images
+:cred_url: http://docs.ansible.com/ansible-tower/latest/html/userguide/credentials.html#credential-types
 
 = Exercise 1.4 - Configuring Ansible Tower
 
@@ -38,6 +39,7 @@ As soon as you login, you will prompted to request a license or browse for an ex
 ---
 
 image::at_lic_prompt.png[caption="Figure 4: ", title="Uploading a License"]
+:cred_url: http://docs.ansible.com/ansible-tower/latest/html/userguide/credentials.html#credential-types
 
 ---
 
@@ -54,6 +56,10 @@ Creating a Credential
 
 Credentials are utilized by Tower for authentication when launching jobs against machines,
 synchronizing with inventory sources, and importing project content from a version control system.
+
+There are many link:{cred_url}[types of credentials] including machine, network, and various cloud providers.  In this
+workshop, we are using a *machine* credential.
+
 ====
 *Step 1:* Select the gear icon     image:at_gear.png[Gear,20,20] +
 
