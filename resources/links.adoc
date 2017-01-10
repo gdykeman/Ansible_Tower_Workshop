@@ -1,55 +1,41 @@
 [[welcome-index]]
-= {product-title} {product-version} Documentation
+= Ansible Resources
 {product-author}
 {product-version}
 :data-uri:
 :icons:
-
-[.lead]
-Welcome to the {product-title} {product-version} documentation, where you can
-find information and guides to help you learn about {product-title} and start
-exploring its features.
-
-From getting started with creating your first application, to trying out more
-advanced build and deployment techniques, these resources provide what you need
-to set up and manage your {product-title} environment
-ifdef::openshift-origin,openshift-enterprise[]
-as a **cluster administrator** or an **application developer**.
-endif::[]
-ifdef::openshift-dedicated,openshift-online[]
-as an **application developer**.
-endif::[]
+:qsguide: https://www.ansible.com/get-started
+:videos: https://www.ansible.com/videos
+:wandt: https://www.ansible.com/webinars-training
+:docs: http://docs.ansible.com/
+:blog: https://www.ansible.com/blog
+:depth: https://www.ansible.com/ansible-in-depth-whitepaper
+:examples: https://github.com/ansible/ansible/tree/devel/examples
 
 [TIP]
 ====
-Use the left navigation bar to browse the documentation, the Search bar in the
-top-left to look for something specific, or the links below to access some
-highlights.
+[.lead]
+Welcome to Ansible Resources, where you can
+find information and guides to help you learn about Ansible and Ansible Tower
+
+[.lead]
+From getting started with creating your first automation, to trying out more
+advanced build and deployment techniques, these resources provide what you need
+to set up and manage your Ansible environment
+
 ====
 
 '''
-[cols="2",frame="none",grid="none"]
-|===
+link:{docs}[Ansible and Ansible Tower Documentation]
 
-.^|[big]#Get Started with {product-title}#
-a|[none]
+link:{qsguide}[Ansible Quick Start Guide]
 
-ifdef::openshift-enterprise,openshift-origin,openshift-dedicated[]
-* xref:../getting_started/developers_console.adoc#getting-started-developers-console[As an application developer]
-endif::openshift-enterprise,openshift-origin,openshift-dedicated[]
+link:{videos}[Ansible Videos]
 
-ifdef::openshift-online[]
-* xref:../getting_started/index.adoc#getting-started-index[Check out a walkthrough on creating your first app]
-endif::openshift-online[]
+link:{wandt}[Webinars and Training]
 
-ifdef::openshift-origin[]
-* xref:../getting_started/administrators.adoc#getting-started-administrators[As a cluster administrator]
-endif::[]
-ifdef::openshift-enterprise[]
-* xref:../install_config/install/quick_install.adoc#install-config-install-quick-install[As a cluster administrator]
-endif::[]
-|===
+link:{blog}[Ansible Blog]
 
-'''
-[cols="2",frame="none",grid="none"]
-|===
+link:{depth}[Ansible In Depth]
+
+link:{examples}[Ansible Examples]
