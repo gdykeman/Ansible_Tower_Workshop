@@ -12,6 +12,22 @@
 
 ---
 
+.Today's Agenda
+* Arrivals / Breakfast - 8:15 - 8:45
+* Introductions / Agenda - 8:45 - 9:00
+* Presentation - 9:00 - 9:30
+* Setup - 9:30 - 9:40
+* Exercise 1.0 - Ad-Hoc Commands - 9:40 - 10:00
+* Break - 10:00 - 10:10
+* Exercise 1.1 - Writing Your First Playbook - 10:10 - 10:40
+* Exercise 1.2 - Running Your First Playbook - 10:40 - 11:00
+* Exercise 1.3 - Installing Ansible Tower - 11:00 - 11:30
+* Exercise 1.4 - Configuring Ansible Tower - 11:30 - 12:00
+* Lunch - 12:00 - 12:30
+* Exercise 1.5 - Creating and Running a Job Template - 12:30 - 1:00
+* Resources, Wrap Up - 1:00 - 1:30
+
+
 .Before We Get Started
 ****
 [.lead]
@@ -69,9 +85,15 @@ ssid: `TBD`
 ====
 ****
 
-
 .Today's Team
 ****
+[.lead]
+Pete Bowden - Solutions Architect
+
+Pete is a Solutions Architect with Red Hat working with enterprise clients in the Northeast. Prior to life at Red Hat, he was a software and dev-ops engineer,
+focusing on micro-services and automated deployments. He currently lives in West Hartford, CT with a dog and a cat that adopted him.
+In his spare time he can be found hiking or attempting to perfect a home-brew clone of a New England IPA.
+
 [.lead]
 Gerald Dykeman - Domain Architect - Ansible
 
@@ -98,12 +120,6 @@ Open Source solutions.
 In his role, Skip also manages Red Hat User Groups within the North East and has presented at events such as Linuxworld and Brainshare.
 He holds a Bachelors of Science Degree, with a dual concentration in Information Systems and Marketing, from the Carroll School of Management at Boston College
 and enjoys Windsurfing, Surfing, Skiing and English Pointers.
-
-[.lead]
-Nate Salemme - Solutions Architect
-
-Nate is a Solution Architect working with strategic and enterprise commercial customers across the northeast.
-His background includes Systems Engineering and Solution Architecture and currently resides just outside Boston with his wife, son and annoying rescue dog.
 
 [.lead]
 Matt St. Onge - Solutions Architect
