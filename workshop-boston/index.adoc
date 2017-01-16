@@ -13,6 +13,7 @@
 ---
 
 .Today's Agenda
+****
 * Arrivals / Breakfast - 8:15 - 8:45
 * Introductions / Agenda - 8:45 - 9:00
 * Presentation - 9:00 - 9:30
@@ -26,7 +27,7 @@
 * Lunch - 12:00 - 12:30
 * Exercise 1.5 - Creating and Running a Job Template - 12:30 - 1:00
 * Resources, Wrap Up - 1:00 - 1:30
-
+****
 
 .Before We Get Started
 ****
