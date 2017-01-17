@@ -15,7 +15,7 @@ Creating a Job Template
 ====
 *Step 1:* Select JOB TEMPLATES +
 
-*Step 2:* Click on ADD <insert     image:at_add.png[Add,35,25] +
+*Step 2:* Click on ADD image:at_add.png[Add,35,25] +
 
 *Step 3:* Complete the form using the following values +
 
@@ -61,6 +61,8 @@ image::at_survey_detail.png[caption="Figure 12: ",title="Survey Form",link="{ima
 *Step 6:* Select ADD image:at_add.png[Add,35,25] +
 
 *Step 7:* Select SAVE image:at_save.png[Add,35,25] +
+
+*Step 8:* Back on the main Job Template page, select SAVE image:at_save.png[Add,35,25] again. +
 
 ====
 

@@ -53,23 +53,23 @@ Conventions Used in This Document
 ====
 
 ====
-Step 1: Run this command to do something or other
+*Step 1:* Run this command to do something or other
 [source,bash]
 ----
 ansible web -m setup
 ----
-* Step 2: Edit this file in this specific way
+*Step 2:* Edit this file in this specific way
 
 [source,bash]
 ----
 ---
- - hosts: web
-   name: This is a play within a playbook
-   become: yes
-   vars:
-     httpd_packages:
-       - httpd
-       - mod_wsgi
+- hosts: web
+  name: This is a play within a playbook
+  become: yes
+  vars:
+    httpd_packages:
+      - httpd
+      - mod_wsgi
 ----
 [IMPORTANT]
 Do not cut and paste text from this document.  We really want you to learn ansible during this workshop,
@@ -79,7 +79,7 @@ and part of that experience is typing out YAML and understanding it's syntax, sp
 
 [.lead]
 Location-Specific Information
-[IMPORTANT]
+[NOTE]
 .WiFi Access
 ====
 ssid: `TBD`

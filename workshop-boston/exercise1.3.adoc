@@ -63,7 +63,7 @@ pg_password=*'ansibleWS'*
 Step 8: run the Ansible Tower setup script
 [source,bash]
 ----
-sudo /tmp/ansible-tower-setup-<version number>/setup.sh
+sudo ./setup.sh
 ----
 
 [NOTE]

@@ -15,11 +15,11 @@ simply need to do one or two things quickly and often, to many remote nodes.
 ====
 Like many Linux commands, ```ansible``` allows for long-form options as well as short-form.  For example:
 ----
-ansible --module-name ping
+ansible web --module-name ping
 ----
 is the same as running
 ----
-ansible -m ping
+ansible web -m ping
 ----
 We are going to be using the short-form options throughout this workshop
 
@@ -30,12 +30,12 @@ We are going to be using the short-form options throughout this workshop
 *Step 1:* Let's start with something really basic - pinging a host.  The ```ping``` module makes sure our web hosts are responsive.
 [source,bash]
 ----
-ansible -m ping web
+ansible web -m ping
 ----
 *Step 2:*  Now let's see how we can run a good ol' fashioned Linux command and format the output using the ```command``` module.
 [source,bash]
 ----
-ansible -m command -a "uptime" web -o
+ansible web -m command -a "uptime" -o
 ----
 *Step 3:* Take a look at your web node's configuration.  The ```setup``` module displays ansible facts (and a lot of them) about an endpoint.
 [source,bash]
