@@ -10,7 +10,7 @@
 :docs: http://docs.ansible.com/
 :blog: https://www.ansible.com/blog
 :depth: https://www.ansible.com/ansible-in-depth-whitepaper
-:examples: https://github.com/ansible/ansible/tree/devel/examples
+:examples: https://github.com/ansible/ansible-examples
 :free_trial: https://www.ansible.com/tower-trial
 :install: http://docs.ansible.com/ansible/intro_installation.html
 
