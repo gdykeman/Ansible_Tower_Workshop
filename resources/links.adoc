@@ -11,6 +11,8 @@
 :blog: https://www.ansible.com/blog
 :depth: https://www.ansible.com/ansible-in-depth-whitepaper
 :examples: https://github.com/ansible/ansible/tree/devel/examples
+:free_trial: https://www.ansible.com/tower-trial
+:install: http://docs.ansible.com/ansible/intro_installation.html
 
 [TIP]
 ====
@@ -26,6 +28,10 @@ to set up and manage your Ansible environment
 ====
 
 '''
+link:{install}[Install Ansible]
+
+link:{free_trial}[Ansible Tower Free Trial]
+
 link:{docs}[Ansible and Ansible Tower Documentation]
 
 link:{qsguide}[Ansible Quick Start Guide]
