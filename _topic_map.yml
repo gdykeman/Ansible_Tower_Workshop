@@ -28,8 +28,6 @@ Topics:
     File: index
   - Name: Setup
     File: setup
-  - Name: Exercise 1.0
-    File: exercise1.0
   - Name: Exercise 1.1
     File: exercise1.1
   - Name: Exercise 1.2
@@ -40,6 +38,10 @@ Topics:
     File: exercise1.4
   - Name: Exercise 1.5
     File: exercise1.5
+  - Name: Exercise 1.6
+    File: exercise1.6
+  - Name: Exercise 2.1
+    File: exercise2.1
   - Name: Wrap Up
     File: wrapup
 
@@ -49,5 +51,3 @@ Dir: resources
 Topics:
   - Name: Links
     File: links
-
-
