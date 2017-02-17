@@ -30,9 +30,8 @@ or directory.
 Loops enable us to repeat the same task over and over again.  For example, lets say you want to install 10 packages.
 By using an ansible loop, you can do that in a single task.
 
-Conditionals are the way in which we make decisions on the fly.  For example, if some of our machines are RHEL 6, we may
-want to enable iptables, but if they are RHEL 7, we want to enable firewalld.  Using a conditional allows us to do this
-in a single task.
+Conditionals are the way in which we make decisions on the fly.  For example, if we want to ensure a task only runs on
+a RHEL server, we can do that with a conditional statement.
 
 For a full understanding of variables, loops, and conditionals; check out our Ansible documentation on these subjects. +
 link:{var_url}[Ansible Variables] +
@@ -60,7 +59,6 @@ will install on your web servers
       - httpd
       - mod_wsgi
       - libselinux-python
-      - firewalld
 ----
 
 
@@ -68,11 +66,12 @@ will install on your web servers
 [source,bash]
 ----
 tasks:
- - name: install pacakges
+ - name: install packages
    yum:
      name: {{ item }}
      state: present
    with_items: "{{ http_packages }}"
+
 
 ----
 ====
@@ -90,91 +89,29 @@ every `item` in `http_packages`
 [.lead]
 Section 2 - Using a Conditional
 
-So, what if I want this playbook to work on RHEL 6 and RHEL 7?  The modules to restart 
-====
-[source,bash]
-----
----
-- hosts: web
-  name: Install the apache web service
-  become: yes
-----
-
-====
-
-- ```---``` Defines the beginning of YAML
-- ```hosts: web``` Defines the host group in your inventory on which this play will run against
-- ```name: Install the apache web service``` This describes our play
-- ```become: yes``` Enables user privilege escalation.  The default is sudo, but su, pbrun, and link:{become_url}[several others] are also supported.
-
-[.lead]
-Section 3: Adding Tasks to Your Play
-
-Now that we've defined your play, let's add some tasks to get some things done.  Align (vertically) the *t* in ```task``` with the *b* ```become```.  +
-Yes, it does actually matter.  In fact, you should make sure all of your playbook statements are aligned in the way shown here. +
-If you want to see the entire playbook for reference, skip to the bottom of this exercise.
+So, what if I want this playbook to only work on a Red Hat Enterprise Linux server?  It's pretty simple actually.
+Just add a conditional statement under the `with_items:` statement like so.
 
 ====
 [source,bash]
 ----
-tasks:
- - name: install apache
-   yum:
-     name: httpd
-     state: present
-
- - name: start httpd
-   service:
-     name: httpd
-     state: started
+when: ansible_os_family  == 'RedHat'
 ----
 
 ====
-
-- ```tasks:``` This denotes that one or more tasks are about to be defined
-- ```- name:``` Each task requires a name which will print to standard output when you run your playbook.
-Therefore, give your tasks a name that is short, sweet, and to the point
-
----
-
-[source,text]
-----
-yum:
-  name: httpd
-  state: present
-----
-- These three lines are calling the Ansible module *yum* to install httpd.
-link:{yum_url}[Click here] to see all options for the yum module.
-
----
-
-[source,text]
-----
-service:
-  name: httpd
-  state: started
-----
-- The next few lines are using the ansible module *service* to start the httpd service.  The service module
-is the preferred way of controlling services on remote hosts.  link:{service_url}[Click here] to learn more
-about the *service* module.
-
----
-
-[.lead]
-Section 4: Saving your Playbook
-
-Now that you've completed writing your playbook, it would be a shame not to keep it.
-
-Use the ```write/quit``` method in ```vi``` or ```vim``` to save your playbook, i.e. ```Esc :wq!```
-
-
-And that should do it.  You should now have a fully written playbook called ```install_apache.yml```.
-You are ready to automate!
-
 [NOTE]
-Ansible (well, YAML really) can be a bit particular about formatting especially around indentation/spacing.  When you all get back to the office,
-read up on this link:{yaml_url}[YAML Syntax] a bit more and it will save you some headaches later.  In the meantime, your completed playbook should look
-like this.  Take note of the spacing and alignment.
+*What the What!?* +
+
+  - `when:` This instructs Ansible to only run the previous task *when* a condition is met +
+- `ansible_os_family == 'RedHat'` `ansible_os_family` is an ansible fact that was gathered as soon as the playbook
+started.  Remember, exercise 1.1, Step 3?  The `setup` module collects a bunch of ansible facts that can be referenced
+throughout the play.  It will run at the start of every playbook unless you tell it not to. +
+
+
+[IMPORTANT]
+How are we doing so far?  +
+We will continue adding to this playbook in the next exercise, but let's just review to make sure
+everything looks right.  You're playbook should like the following at this point.
 
 [source,bash]
 ----
@@ -182,15 +119,18 @@ like this.  Take note of the spacing and alignment.
 - hosts: web
   name: Install the apache web service
   become: yes
+
+  vars:
+    http_packages:
+      - httpd
+      - mod_wsgi
+      - libselinux-python
 
   tasks:
-    - name: install apache
-      yum:
-        name: httpd
-        state: present
-
-    - name: start httpd
-      service:
-        name: httpd
-        state: started
+   - name: install packages
+     yum:
+       name: {{ item }}
+       state: present
+     with_items: "{{ http_packages }}"
+     when: ansible_os_family  == 'RedHat'
 ----
