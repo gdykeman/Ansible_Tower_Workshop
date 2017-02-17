@@ -73,6 +73,7 @@ tasks:
 ====
 
 [NOTE]
+====
 *What the Helsinki is happening here!?* +
 
 - `vars:` You've told Ansible the next thing it sees will be a variable name +
@@ -81,6 +82,7 @@ is a list of those packages +
 - `{{ item }}` You are telling Ansible that this will expand into a list item like `httpd`, `mod_wsgi`, etc. +
 - `with_items: "{{ http_packages }}` This is your loop which is instructing Ansible to perform this task on
 every `item` in `http_packages`
+====
 
 [.lead]
 Section 2 - Using a Conditional
@@ -89,25 +91,37 @@ So, what if I want this playbook to only work on a Red Hat Enterprise Linux serv
 Just add a conditional statement under the `with_items:` statement like so.
 
 ====
-[source,bash]
+[subs=+quotes]
 ----
-when: ansible_os_family  == 'RedHat'
+tasks:
+ - name: install packages
+   yum:
+     name: {{ item }}
+     state: present
+   with_items: "{{ http_packages }}"
+   *when: ansible_os_family  == 'RedHat'*
 ----
-
 ====
+
 [NOTE]
+====
 *What the What!?* +
 
   - `when:` This instructs Ansible to only run the previous task *when* a condition is met +
 - `ansible_os_family == 'RedHat'` `ansible_os_family` is an ansible fact that was gathered as soon as the playbook
 started.  Remember, exercise 1.1, Step 3?  The `setup` module collects a bunch of ansible facts that can be referenced
 throughout the play.  It will run at the start of every playbook unless you tell it not to. +
+====
 
+[.lead]
+Section 3: Review
 
 [IMPORTANT]
+====
 How are we doing so far?  +
 We will continue adding to this playbook in the next exercise, but let's just review to make sure
 everything looks right.  You're playbook should like the following at this point.
+====
 
 [source,bash]
 ----

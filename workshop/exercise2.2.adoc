@@ -1,10 +1,7 @@
 :file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
 :handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
 
-
 == Exercise 2.2 - Files, Handlers, and the Directories that love them
-
----
 
 ****
 A few other very common things you will be doing in playbooks include the deployment of files and
