@@ -1,4 +1,3 @@
-:figure-caption!:
 :file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
 :handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
 
@@ -52,8 +51,8 @@ need during this section is a directory called `files`.
 [.lead]
 Section 2 - Adding and using a Handler
 
-Now that we've deployed a new file to the web server, we may want to restart the apache service.  There are really two parts
-to this Section; adding a handler to the playbook and calling the handler during the `copy index.html` task.  We will start
+Once we deploy a new file to the web server, we may want to restart the apache service.  There are really two parts
+to this Section; adding a handler to the playbook and calling the handler after the `copy index.html` task.  We will start
 with the former.
 
 ====
