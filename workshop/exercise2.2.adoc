@@ -1,0 +1,137 @@
+:figure-caption!:
+:file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
+:handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
+
+
+== Exercise 2.2 - Files, Handlers, and the Directories that love them
+
+---
+
+****
+A few other very common things you will be doing in playbooks include the deployment of files and
+restarting services.
+
+Ansible has a `Files` module that enables you to do a bunch of things to files, including deploy them.
+When we want to start, stop, or restart services through a playbook, the correct method is to use
+an Ansible Handler.
+
+You can read more about the File module and Handlers here. +
+link:{file_url}[Ansible File Module] +
+link:{handler_url}:[Ansible Handlers]
+
+This exercise also gives us the opportunity to further explore the best practices of playbook directory structure.
+So... we have that to look forward to.
+
+[.lead]
+Section 1 - Adding a task to deploy a web server index
+
+Before we can add a file copying task to our playbook, we need to modify our playbook directory structure and download a file.
+Playbooks have some best practice around directory structure.  There are `group_vars`, `roles`, `tasks`, etc, but what we
+need during this section is a directory called `files`.
+
+====
+*Step 1:* Ensure you are still in your playbook directory, then create a new directory
+----
+% cd ~/apache_basic
+% mkdir files
+----
+*Step 2:* Move into your newly created `files` directory and download a web server index file
+----
+% cd files
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-artifacts/index.html
+----
+*Step 3:* Edit your playbook to add file copying task
+[source,bash]
+----
+- name: copy index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/
+----
+====
+[.lead]
+Section 2 - Adding and using a Handler
+
+Now that we've deployed a new file to the web server, we may want to restart the apache service.  There are really two parts
+to this Section; adding a handler to the playbook and calling the handler during the `copy index.html` task.  We will start
+with the former.
+
+====
+*Step 1:* Add a handler to the play
+
+[source,bash]
+----
+handlers:
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted
+      enabled: yes
+----
+====
+
+[NOTE]
+====
+
+*Hey, that's a new thing*
+
+You may notice that this looks a lot like the other two tasks you wrote, but there is something new.
+
+- `handlers:` This "new thing" is telling the *play* that the `tasks:` are over, and now we are defining `handlers:`.
+Everything below that looks the same as any other task, i.e. you give it a name, a module, and the options for that
+module.
+====
+
+====
+*Step 2:* Add a `notify` statement after the `copy index.html` task.  The `notify` statement is an instruction to
+the `handler` to run and calls it by handler name, i.e. `restart apache`.  This goes directly under the `copy index.html` task.
+[subs=+quotes]
+----
+- name: copy index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/
+  *notify:*
+     *- restart apache*
+----
+====
+[.lead]
+Section 3 - Review
+
+Your new, improved playbook is done!  Let's take a second look to make sure everything
+looks the way you intended.  If not, now is the time for us to fix it up.
+
+[source,bash]
+----
+---
+- hosts: web
+  name: Install the apache web service
+  become: yes
+
+  vars:
+    http_packages:
+      - httpd
+      - mod_wsgi
+      - libselinux-python
+
+  tasks:
+    - name: install packages
+      yum:
+        name: {{ item }}
+        state: present
+      with_items: "{{ http_packages }}"
+      when: ansible_os_family  == 'RedHat'
+
+    - name: copy index.html
+      copy:
+        src: files/index.html
+        dest: /var/www/html/
+      notify: restart apache
+
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes
+----
