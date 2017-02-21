@@ -1,15 +1,16 @@
+:file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
-:yaml_url: http://docs.ansible.com/ansible/YAMLSyntax.html
 :var_url: http://docs.ansible.com/ansible/playbooks_variables.html
 :loop_url: http://docs.ansible.com/ansible/playbooks_loops.html
-:cond_url: http://docs.ansible.com/ansible/playbooks_conditionals.html
+:handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
+:jinja2_url: http://docs.ansible.com/ansible/playbooks_templating.html
 
 
 = Lession 2.0 - Adding Flexibility to your Playbooks
 
 ---
 
-== Exercise 2.1 - Using Variables, Loops, and Conditionals
+== Exercise 2.1 - Using Variables, Loops, and Handlers
 
 ---
 
@@ -18,7 +19,7 @@ In Lesson 1.0, you were introduced to Ansible Core and Ansible Tower learning th
 to teach some more advanced ansible skills that will add flexibility and power to your playbooks.
 
 Ansible exists to make tasks simple and repeatable.  We also know that not all systems are exactly alike and often require
-some slight change to the way an Ansible playbook is run.  Enter variables, loops, and conditionals.
+some slight change to the way an Ansible playbook is run.  Enter variables.
 
 Variables are how we deal with differences between your systems, allowing you to account for a change in port, IP address
 or directory.
@@ -26,121 +27,220 @@ or directory.
 Loops enable us to repeat the same task over and over again.  For example, lets say you want to install 10 packages.
 By using an ansible loop, you can do that in a single task.
 
-Conditionals are the way in which we make decisions on the fly.  For example, if we want to ensure a task only runs on
-a RHEL server, we can do that with a conditional statement.
+Handlers are the way in which we restart services.  Did you just deploy a new config file, install a new package?
+If so, you may need to restart a service for those changes to take effect.  We do that with a handler.
 
-For a full understanding of variables, loops, and conditionals; check out our Ansible documentation on these subjects. +
+For a full understanding of variables, loops, and handlers; check out our Ansible documentation on these subjects. +
 link:{var_url}[Ansible Variables] +
 link:{loop_url}[Ansible Loops] +
-link:{cond_url}[Ansible Conditionals]
+link:{handler_url}[Ansible Handlers]
 
 [.lead]
-Section 1 - Adding variables and a loop to your playbook
+Section 1 - Adding variables and a file deployment task to your playbook
 
-To begin, we are going to use the playbook you created in Exercise 1.2
+To begin, we are going to create a new playbook
 
 ====
-*Step 1:* Navigate to and open your existing *install_apache.yml* playbook in your editor
+*Step 1:* Navigate to your home directory, create a new folder called `telegraf`, and create a new playbook called `telegraf.yml`
 ----
-% cd ~/apache_basic
-% vi install_apache.yml
+% mkdir ~/telegraf
+% vim telegraf.yml
 ----
-*Step 2:* Add some variables to your playbook, after the *become* statement.  These are the addtional packages your playbook
-will install on your web servers
+*Step 2:* Download some files.  Before we can continue with a file deployment tasks, we need some files to deploy.
+----
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/telegraf.conf.j2
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/influxdb.repo.j2
+----
+
+*Step 3:* Create your play which will target your `web` hosts
+[source,bash]
+----
+- hosts: web
+  become: yes
+  name: Setup telegraf on all web servers
+----
+*Step 4:* Add some variables to your playbook.  These include some telegraf-specific variables as well
+as a couple packages this playbook will install.
 
 [source,bash]
 ----
-  vars:
-    http_packages:
-      - httpd
-      - mod_wsgi
-      - libselinux-python
+vars:
+  telegraf_version: 0.2.4
+  telegraf_flush_retries: 2
+  influxdb_db_name: telegraf
+  influxdb_url: http://localhost:8086
+  packages:
+    - vim
+    - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 ----
 
-
-*Step 3:* Modify the *install apache* task to be called *install packages*
+*Step 5:* Add a file deployment task
 [source,bash]
 ----
 tasks:
- - name: install packages
-   yum:
-     name: {{ item }}
-     state: present
-   with_items: "{{ http_packages }}"
-
-
+  - name: Add InfluxDB repository file [RHEL/CentOS]
+    template:
+      src: influxdb.repo.j2
+      dest: /etc/yum.repos.d/influxdb.repo
+      force: yes
+      backup: yes
 ----
 ====
 
 [NOTE]
 ====
+
 *What the Helsinki is happening here!?* +
 
-- `vars:` You've told Ansible the next thing it sees will be a variable name +
-- `http_packages` You are defining a list-type variable called http_packages.  What follows
-is a list of those packages +
-- `{{ item }}` You are telling Ansible that this will expand into a list item like `httpd`, `mod_wsgi`, etc. +
-- `with_items: "{{ http_packages }}` This is your loop which is instructing Ansible to perform this task on
-every `item` in `http_packages`
+- `vars:` You've told Ansible the next thing it sees will be a variable name.  The first four are simple key/value pairs
+while the 5th is a list-type variable.  (These come in handy for loops)
+- `template:` This module specifies that a jinja2 template is being used and deployed. `template` is part of the `Files`
+  module family and we encourage you to check out all of the other link:{file_url}[file-management modules here].
+- *jinja-who?* - Not to be confused with 2013's blockbuster "Ninja II - Shadow of a Tear", link:{jinja2_url}[jinja2] is
+used in Ansible to transform data inside a template expression, i.e. filters.
 ====
 
 [.lead]
-Section 2 - Using a Conditional
-
-So, what if I want this playbook to only work on a Red Hat Enterprise Linux server?  It's pretty simple actually.
-Just add a conditional statement under the `with_items:` statement like so.
+Section 2: Adding a loop, deploying a file, and starting a service
 
 ====
-[subs=+quotes]
+*Step 1:* Add two new tasks for package installations.
+
+[source,bash]
 ----
-tasks:
- - name: install packages
-   yum:
-     name: {{ item }}
-     state: present
-   with_items: "{{ http_packages }}"
-   *when: ansible_os_family  == 'RedHat'*
+- name: install support packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packages }}"
+
+- name: install telegraf
+  yum:
+    name: telegraf-{{ telegraf_version }}
+    state: present
+  notify: restart telegraf
+----
+
+*Step 2:* Deploy a file and start a service
+[source,bash]
+----
+- name: configure telegraf
+  template:
+    src: telegraf.conf.j2
+    dest: /etc/opt/telegraf/telegraf.conf
+  notify: restart telegraf
+
+- name: start telegraf
+  service:
+    name: telegraf
+    state: started
+    enabled: yes
 ----
 ====
 
 [NOTE]
 ====
-*What the What!?* +
+*So... what did I just write?*
 
-  - `when:` This instructs Ansible to only run the previous task *when* a condition is met +
-- `ansible_os_family == 'RedHat'` `ansible_os_family` is an ansible fact that was gathered as soon as the playbook
-started.  Remember, exercise 1.1, Step 3?  The `setup` module collects a bunch of ansible facts that can be referenced
-throughout the play.  It will run at the start of every playbook unless you tell it not to. +
+- `{{ item }}` You are telling Ansible that this will expand into a list item like `vim` the the url under the `packages` variable +
+- `with_items: "{{ packages }}` This is your loop which is instructing Ansible to perform this task on
+every `item` in the `packages` variable.
+- `notify: restart telegraf` This statement is a `handler`, so we'll come back to it in Section 3.
+- `template` This is another file deployment task like you saw in Section 1
+- `service` is an ansible module that starts/stops/restarts a service.
 ====
 
 [.lead]
-Section 3: Review
+Section 3 - Defining and using Handlers
 
-[IMPORTANT]
+There are any number of reasons we often need to restart a service/process including the deployment of a configuration file,
+installing a new package, etc.  There are really two parts to this Section; adding a handler to the playbook and calling the
+handler after the a task.  We will start with the former.
+
 ====
-How are we doing so far?  +
-We will continue adding to this playbook in the next exercise, but let's just review to make sure
-everything looks right.  You're playbook should like the following at this point.
+*Step 1:* Define a handler
+
+[source,bash]
+----
+handlers:
+  - name: restart telegraf
+    service:
+      name: telegraf
+      state: restarted
+----
 ====
+
+[NOTE]
+====
+
+*You can't have a former if you don't mention the latter* +
+
+- `handler:` This is telling the *play* that the `tasks:` are over, and now we are defining `handlers:`.
+  Everything below that looks the same as any other task, i.e. you give it a name, a module, and the options for that
+  module.  This is the definition of a handler.
+- `notify: restart telegraf` ...and here is your latter. Finally!  The `nofify` statement is the invocation of a handler by
+name.  Quite the reveal, we know.   You already noticed that you've added a `notify` statement to the `install telegraf`
+and the `configure telegraf` tasks, now you know why.
+====
+
+[.lead]
+Section 4 - Review
+
+Your new, improved playbook is done!  Let's take a second look to make sure everything
+looks the way you intended.  If not, now is the time for us to fix it up.
+
 
 [source,bash]
 ----
 ---
 - hosts: web
-  name: Install the apache web service
   become: yes
-
+  name: Setup telegraf on all web servers
   vars:
-    http_packages:
-      - httpd
-      - mod_wsgi
-      - libselinux-python
+    telegraf_version: 0.2.4
+    telegraf_flush_retries: 2
+    influxdb_db_name: telegraf
+    influxdb_url: http://localhost:8086
+    packages:
+      - vim
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
   tasks:
-   - name: install packages
-     yum:
-       name: {{ item }}
-       state: present
-     with_items: "{{ http_packages }}"
-     when: ansible_os_family  == 'RedHat'
+    - name: Add InfluxDB repository file [RHEL/CentOS]
+      template:
+        src: influxdb.repo.j2
+        dest: /etc/yum.repos.d/influxdb.repo
+        force: yes
+        backup: yes
+
+    - name: install support packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages }}"
+
+    - name: install telegraf
+      yum:
+        name: telegraf-{{ telegraf_version }}
+        state: present
+      notify: restart telegraf
+
+    - name: configure telegraf
+      template:
+        src: telegraf.conf.j2
+        dest: /etc/opt/telegraf/telegraf.conf
+      notify: restart telegraf
+
+    - name: start telegraf
+      service:
+        name: telegraf
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: restart telegraf
+      service:
+        name: telegraf
+        state: restarted
+
 ----
