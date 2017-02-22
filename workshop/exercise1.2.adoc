@@ -126,7 +126,7 @@ about the *service* module.
 ---
 
 [.lead]
-Section 4: Saving your Playbook
+Section 4: Review
 
 Now that you've completed writing your playbook, it would be a shame not to keep it.
 

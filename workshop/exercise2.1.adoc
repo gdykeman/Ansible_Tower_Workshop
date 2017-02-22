@@ -188,7 +188,7 @@ and the `configure telegraf` tasks, now you know why.
 Section 4 - Review
 
 Your new, improved playbook is done!  Let's take a second look to make sure everything
-looks the way you intended.  If not, now is the time for us to fix it up.
+looks the way you intended.  If not, now is the time for us to fix it up. The figure below shows line counts and spacing.
 
 
 image::codespace_2.png[caption="Figure 1: ", title="Completed Playbook - w/Spacing", link="{image_links}/codespace_2.png"]
