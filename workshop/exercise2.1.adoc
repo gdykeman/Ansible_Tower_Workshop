@@ -4,6 +4,7 @@
 :loop_url: http://docs.ansible.com/ansible/playbooks_loops.html
 :handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
 :jinja2_url: http://docs.ansible.com/ansible/playbooks_templating.html
+:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
 
 
 = Lession 2.0 - Adding Flexibility to your Playbooks
@@ -190,4 +191,4 @@ Your new, improved playbook is done!  Let's take a second look to make sure ever
 looks the way you intended.  If not, now is the time for us to fix it up.
 
 
-image::codespace_2.png[caption="Figure 1: ", title="Completed Playbook - w/Spacing"]
+image::codespace_2.png[caption="Figure 1: ", title="Completed Playbook - w/Spacing", link="{image_links}/codespace_2.png"]

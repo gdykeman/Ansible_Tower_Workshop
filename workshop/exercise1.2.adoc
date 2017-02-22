@@ -4,6 +4,7 @@
 :yum_url: http://docs.ansible.com/ansible/yum_module.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
 :yaml_url: http://docs.ansible.com/ansible/YAMLSyntax.html
+:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
 
 
 = Exercise 1.2 - Writing Your First playbook
@@ -140,4 +141,4 @@ Ansible (well, YAML really) can be a bit particular about formatting especially 
 read up on this link:{yaml_url}[YAML Syntax] a bit more and it will save you some headaches later.  In the meantime, your completed playbook should look
 like this.  Take note of the spacing and alignment.
 
-image::codespace_1.png[caption="Figure 1: ", title="Completed Playbook - w/Spacing"]
+image::codespace_1.png[caption="Figure 1: ", title="Completed Playbook - w/Spacing", link="{image_links}/codespace_1.png"]

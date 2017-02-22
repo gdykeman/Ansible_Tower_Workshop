@@ -1,5 +1,5 @@
 :tower_url: https://your-control-node-ip-address
-:license_url: http://ansible-workshop-bos.redhatgov.io/ansible-license.json
+:license_url: http://ansible-workshop-upmc.redhatgov.io/ansible-license.json
 
 = Exercise 1.4 - Installing Ansible Tower
 
