@@ -44,7 +44,7 @@ To begin, we are going to create a new playbook
 *Step 1:* Navigate to your home directory, create a new folder called `telegraf`, and create a new playbook called `telegraf.yml`
 ----
 % mkdir ~/telegraf
-% vim telegraf.yml
+% touch telegraf.yml
 ----
 *Step 2:* Download some files.  Before we can continue with a file deployment tasks, we need some files to deploy.
 ----
@@ -52,7 +52,7 @@ To begin, we are going to create a new playbook
 % curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/influxdb.repo.j2
 ----
 
-*Step 3:* Create your play which will target your `web` hosts
+*Step 3:* Edit your playbook and define a play which will target your `web` hosts
 [source,bash]
 ----
 - hosts: web
