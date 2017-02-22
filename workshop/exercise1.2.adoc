@@ -140,21 +140,4 @@ Ansible (well, YAML really) can be a bit particular about formatting especially 
 read up on this link:{yaml_url}[YAML Syntax] a bit more and it will save you some headaches later.  In the meantime, your completed playbook should look
 like this.  Take note of the spacing and alignment.
 
-[source,bash]
-----
----
-- hosts: web
-  name: Install the apache web service
-  become: yes
-
-  tasks:
-    - name: install apache
-      yum:
-        name: httpd
-        state: present
-
-    - name: start httpd
-      service:
-        name: httpd
-        state: started
-----
+image::codespace_1.png[caption="Figure 1: ", title="Completed Playbook - w/Spacing"]
