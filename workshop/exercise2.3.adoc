@@ -1,0 +1,60 @@
+:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
+
+== Exercise 2.3 - Roles: Making your playbooks reusable
+
+****
+While it is possible to write a playbook in one file as we've done throughout this workshop,
+eventually you’ll want to reuse files and start to organize things.
+
+Ansible Roles is the way we do this.  When you create a role, you break your playbook into parts and those parts
+sit in a directory structure.  "Wha??  You mean that seemingly useless link:{dir_url}[best practice]you mentioned in
+exercise 1.2?".  Yep, that one.
+
+For this exercise, you are going to take the playbook you just wrote and refactor it into a role.  In addition, you'll
+learn to use Ansible Galaxy.
+
+Let's begin with seeing how your telegraf playbook will break down into a role.
+
+image::roledir_1.png[caption="Figure 1: ", title="telegraf role directory structure", link="{image_links}/roledir_1.png"]
+
+Fortunately, you don't have to create all of these directories and files by hand.  That's where Ansible Galaxy comes in. Let's
+get started
+
+[.lead]
+Section 1 - Using Ansible Galaxy to create a role
+
+Ansible Galaxy is a free site for finding, downloading, and sharing roles.  It's also pretty handy for creating them which is
+what we are about to do here.
+
+====
+*Step 1:* Navigate to your `telegraf` playbook
+
+----
+% cd ~/telegraf
+----
+
+*Step 2:* Create a directory called `roles` and `cd` into it
+----
+% mkdir roles
+% cd roles
+----
+
+*Step 3:* Use the `ansible-galaxy` command to initialize a new role called `telegraf`
+----
+% ansible-galaxy init telegraf
+----
+
+Take a look around the structure you just created.  It should look a lot like Figure 1 above.  However, we need to complete
+one more step before moving onto section 2.  It is Ansible best practice to clean out role directories and files you won't
+be using.  For this role, we won't be using anything from `files` or `tests`.
+
+*Step 4:* Remove the `files` and `tests` directories
+----
+% cd ~/telegraf/roles/telgraf/
+% rm -rf files tests
+----
+
+[.lead]
+Section 2: Breaking your `telegraf.yml` playbook into the newly created `telegraf` role
+
+In this section, we will separate out the major parts of your playbook including `vars`, `tasks`, `templates`,
