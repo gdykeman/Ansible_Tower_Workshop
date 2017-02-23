@@ -1,7 +1,7 @@
 :file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
 :handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
 
-= Exercise 2.2 - Running the telegraf playbook
+= Exercise 2.2 - Running the apache-basic-playbook
 
 ---
 
@@ -13,18 +13,18 @@ it actually runs.
 So, lets do that now.
 
 [.lead]
-Section 1 - Running your new telegraf playbook
+Section 1 - Running your new apache playbook
 
 ====
 *Step 1:* Make sure you are in the right directory and create a host file.
 
 ----
-% cd ~/telegraf
+% cd ~/apache-basic-playbook
 ----
 
 [NOTE]
 Since you already did the work of creating a host file in Lession 1.0, feel free to just copy `hosts` from
-your `install_apache` playbook.  Or, hey... if you like to type, create a new file called `hosts` and put this in it.
+your `apache_basic` project.  Or, hey... if you like to type, create a new file called `hosts` and put this in it.
 
 ----
 [web]
@@ -34,7 +34,7 @@ node-2 ansible_host=<IP Address of your node-2>
 
 *Step 2:* Run your playbook
 ----
-% ansible-playbook -i ./hosts telegraf.yml -K
+% ansible-playbook -i ./hosts site.yml -K
 ----
 
 [.lead]

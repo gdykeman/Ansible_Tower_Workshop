@@ -125,7 +125,7 @@ influxdb_url: http://localhost:8086
     state: restarted
 ----
 
-*Step 6:* Add a role task in `roles/telegraf/tasks/main.yml`
+*Step 6:* Add tasks to your role in `roles/telegraf/tasks/main.yml`
 [source,bash]
 ----
 ---
