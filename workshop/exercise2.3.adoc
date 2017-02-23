@@ -58,6 +58,8 @@ be using.  For this role, we won't be using anything from `files`, `tests`.
 
 ====
 
+***
+
 [.lead]
 Section 2: Breaking your `site.yml` playbook into the newly created `apache-simple` role
 
@@ -180,6 +182,9 @@ last exercise by removing the old templates directory.
 
 ----
 ====
+
+***
+
 [.lead]
 Section 3: Running your new role-based playbook
 

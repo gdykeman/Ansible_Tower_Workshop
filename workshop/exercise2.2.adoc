@@ -34,6 +34,7 @@ node-2 ansible_host=<IP Address of your node-2>
 % ansible-playbook -i ./hosts site.yml -K
 ----
 
+***
 [.lead]
 Section 2: Review
 

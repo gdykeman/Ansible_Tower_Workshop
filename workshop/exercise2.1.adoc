@@ -69,7 +69,7 @@ will install on your web servers, plus some web server specific configurations.
 ----
 
 
-*Step 3:* Add a new task called *install http packages*.
+*Step 3:* Add a new task called *install httpd packages*.
 [source,bash]
 ----
 tasks:
@@ -87,13 +87,15 @@ tasks:
 *What the Helsinki is happening here!?* +
 
 - `vars:` You've told Ansible the next thing it sees will be a variable name +
-- `http_packages` You are defining a list-type variable called http_packages.  What follows
+- `httpd_packages` You are defining a list-type variable called httpd_packages.  What follows
 is a list of those packages +
 - `{{ item }}` You are telling Ansible that this will expand into a list item like `httpd` and `mod_wsgi`. +
-- `with_items: "{{ http_packages }}` This is your loop which is instructing Ansible to perform this task on
-every `item` in `http_packages`
+- `with_items: "{{ httpd_packages }}` This is your loop which is instructing Ansible to perform this task on
+every `item` in `httpd_packages`
 - `notify: restart apache service` This statement is a `handler`, so we'll come back to it in Section 3.
 ====
+
+***
 
 [.lead]
 Section 2 - Deploying files and starting a service
@@ -104,7 +106,7 @@ case, we'll leverage the `file` and `template` modules.
 After that, you will define a task to start the start the apache service.
 
 ====
-*Step 1:* Create a `templates` directory in you project directory and download two files.
+*Step 1:* Create a `templates` directory in your project directory and download two files.
 ----
 % mkdir templates
 % cd templates
@@ -151,6 +153,8 @@ used in Ansible to transform data inside a template expression, i.e. filters.
 - *service* - The Service module starts/stops/restarts services.
 ====
 
+***
+
 [.lead]
 Section 3 - Defining and using Handlers
 
@@ -170,6 +174,7 @@ handlers:
       state: restarted
       enabled: yes
 ----
+====
 
 [NOTE]
 ====
@@ -183,6 +188,7 @@ name.  Quite the reveal, we know.   You already noticed that you've added a `not
 task, now you know why.
 ====
 
+***
 
 [.lead]
 Section 4: Review
