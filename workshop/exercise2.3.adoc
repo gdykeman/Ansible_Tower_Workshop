@@ -1,6 +1,9 @@
 :image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
+:var_prec_url: http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 
-== Exercise 2.3 - Roles: Making your playbooks reusable
+= Exercise 2.3 - Roles: Making your playbooks reusable
+
+---
 
 ****
 While it is possible to write a playbook in one file as we've done throughout this workshop,
@@ -17,11 +20,10 @@ Let's begin with seeing how your telegraf playbook will break down into a role.
 
 image::roledir_1.png[caption="Figure 1: ", title="telegraf role directory structure", link="{image_links}/roledir_1.png"]
 
-Fortunately, you don't have to create all of these directories and files by hand.  That's where Ansible Galaxy comes in. Let's
-get started
+Fortunately, you don't have to create all of these directories and files by hand.  That's where Ansible Galaxy comes in.
 
 [.lead]
-Section 1 - Using Ansible Galaxy to create a role
+Section 1 - Using Ansible Galaxy to initialize a new role
 
 Ansible Galaxy is a free site for finding, downloading, and sharing roles.  It's also pretty handy for creating them which is
 what we are about to do here.
@@ -46,15 +48,142 @@ what we are about to do here.
 
 Take a look around the structure you just created.  It should look a lot like Figure 1 above.  However, we need to complete
 one more step before moving onto section 2.  It is Ansible best practice to clean out role directories and files you won't
-be using.  For this role, we won't be using anything from `files` or `tests`.
+be using.  For this role, we won't be using anything from `files`, `tests`, or `vars`.
 
-*Step 4:* Remove the `files` and `tests` directories
+*Step 4:* Remove the `files`, `tests`, and `vars` directories
 ----
 % cd ~/telegraf/roles/telgraf/
-% rm -rf files tests
+% rm -rf files tests vars
 ----
+====
 
 [.lead]
 Section 2: Breaking your `telegraf.yml` playbook into the newly created `telegraf` role
 
-In this section, we will separate out the major parts of your playbook including `vars`, `tasks`, `templates`,
+In this section, we will separate out the major parts of your playbook including `vars:`, `tasks:`, `template:`, and `handlers:`
+
+[NOTE]
+====
+*Hey, wait just a minute there buster... didn't you just have us remove the `vars` directory?* +
+
+Yes... yes we did.  Variables can live in quite a few places.  Just to name a few: +
+
+- vars directory
+- defaults directory
+- group_vars directory
+- In the playbook under the `vars:` section
+- In any file which can be specified on the command line using the `--extra_vars` option
+- On a boat, in a moat, with a goat  _(disclaimer:  this is a complete lie)_
+
+Bottom line, you need to read up on link:{var_prec_url}[variable precidence] to understand both where
+to define variables and which locations take precidence.  In this exercise, we are using role defaults
+to define our variables.
+====
+
+====
+*Step 1:* Create a new playbook called `setup.yml`
+----
+% cd ~/telegraf
+% vim setup.yml
+----
+
+*Step 2:* Add a play
+
+[source,bash]
+----
+- hosts: web
+  become: yes
+  name: Setup telegraf on servers
+----
+
+*Step 3:* Add the `telegraf` role
+[source,bash]
+----
+  roles:
+    - telegraf
+----
+
+*Step 4:* Add some default variables to your role in `roles/telegraf/defaults/main.yml`
+[source,bash]
+----
+---
+# defaults file for telegraf
+telegraf_version: 0.2.4
+influxdb_db_name: telegraf
+telegraf_flush_retries: 3
+influxdb_url: http://localhost:8086
+----
+
+*Step 5:* Create your role handler in `roles/telegraf/handlers/main.yml`
+[source,bash]
+----
+---
+# handlers file for telegraf
+- name: restart telegraf
+  service:
+    name: telegraf
+    state: restarted
+----
+
+*Step 6:* Add a role task in `roles/telegraf/tasks/main.yml`
+[source,bash]
+----
+---
+# tasks file for telegraf
+- name: Add InfluxDB repository file [RHEL/CentOS]
+  template:
+    src: influxdb.repo.j2
+    dest: /etc/yum.repos.d/influxdb.repo
+    force: yes
+    backup: yes
+
+- name: install telegraf
+  yum:
+    name: telegraf-{{ telegraf_version }}
+    state: present
+  notify: restart telegraf
+
+- name: configure telegraf
+  template:
+    src: telegraf.conf.j2
+    dest: /etc/opt/telegraf/telegraf.conf
+  notify: restart telegraf
+
+- name: start telegraf
+  service:
+    name: telegraf
+    state: started
+    enabled: yes
+----
+*Step 7:* Download a couple of templates into `roles/telegraf/templates/`
+[source,bash]
+----
+% cd ~/telegraf/roles/telegraf/templates/
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/telegraf.conf.j2
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/influxdb.repo.j2
+----
+====
+[.lead]
+Section 3: Running your new role-based playbook
+
+Now that you've successfully separated your single-file telegraf playbook into a role,
+let's run it.
+
+The only real difference here from exercise 2.2 is that you have to specify the new playbook called `setup.yml`
+
+====
+*Step 1:* Run the playbook
+----
+% ansible-playbook -i ./hosts setup.yml -K
+----
+
+If successful, you're standard output should look similar to the figure below.
+image::stdout_3.png[caption="Figure 1: ", title="telegraf role-based playbook stdout"]
+
+[.lead]
+Section 3: Review
+
+You should now have a completed playbook with a single role called `telegraf`.  The advantage
+of structuring your playbook into roles is that you can now add new roles to the playbook
+using Ansible Galaxy or simply writing your own.  In addition, roles simplify changes to variables, tasks,
+templates, etc.

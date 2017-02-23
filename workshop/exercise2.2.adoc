@@ -1,7 +1,9 @@
 :file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
 :handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
 
-= Exercise 2.2 - Running you newest playbook
+= Exercise 2.2 - Running the telegraf playbook
+
+---
 
 ****
 Congratulations!  You just wrote a playbook that incorporates some key Ansible concepts that you use in
