@@ -16,9 +16,9 @@ exercise 1.2?".  Yep, that one.
 For this exercise, you are going to take the playbook you just wrote and refactor it into a role.  In addition, you'll
 learn to use Ansible Galaxy.
 
-Let's begin with seeing how your telegraf playbook will break down into a role.
+Let's begin with seeing how your apache-basic-playbook will break down into a role.
 
-image::roledir_1.png[caption="Figure 1: ", title="telegraf role directory structure", link="{image_links}/roledir_1.png"]
+image::roledir_1.png[caption="Figure 1: ", title="apache-basic-playbook role directory structure", link="{image_links}/roledir_1.png"]
 
 Fortunately, you don't have to create all of these directories and files by hand.  That's where Ansible Galaxy comes in.
 
@@ -29,10 +29,10 @@ Ansible Galaxy is a free site for finding, downloading, and sharing roles.  It's
 what we are about to do here.
 
 ====
-*Step 1:* Navigate to your `telegraf` playbook
+*Step 1:* Navigate to your `apache-basic-playbook` project
 
 ----
-% cd ~/telegraf
+% cd ~/apache-basic-playbook
 ----
 
 *Step 2:* Create a directory called `roles` and `cd` into it
@@ -41,30 +41,72 @@ what we are about to do here.
 % cd roles
 ----
 
-*Step 3:* Use the `ansible-galaxy` command to initialize a new role called `telegraf`
+*Step 3:* Use the `ansible-galaxy` command to initialize a new role called `apache-simple`
 ----
-% ansible-galaxy init telegraf
+% ansible-galaxy init apache-simple
 ----
 
 Take a look around the structure you just created.  It should look a lot like Figure 1 above.  However, we need to complete
 one more step before moving onto section 2.  It is Ansible best practice to clean out role directories and files you won't
-be using.  For this role, we won't be using anything from `files`, `tests`, or `vars`.
+be using.  For this role, we won't be using anything from `files`, `tests`.
 
-*Step 4:* Remove the `files`, `tests`, and `vars` directories
+*Step 4:* Remove the `files` and `tests` directories
 ----
-% cd ~/telegraf/roles/telgraf/
-% rm -rf files tests vars
+% cd ~/apache-basic-playbook/roles/apache-simple/
+% rm -rf files tests
 ----
+
 ====
 
 [.lead]
-Section 2: Breaking your `telegraf.yml` playbook into the newly created `telegraf` role
+Section 2: Breaking your `site.yml` playbook into the newly created `apache-simple` role
 
 In this section, we will separate out the major parts of your playbook including `vars:`, `tasks:`, `template:`, and `handlers:`
 
+
+
+====
+*Step 1:* Make a backup copy of `site.yml`, then create a new `site.yml`
+----
+% mv site.yml site.yml.bkup
+% vim site.yml
+----
+
+*Step 2:* Add the play definition and the invocation of a single role
+
+[source,bash]
+----
+---
+- hosts: web
+  name: This is a play within a playbook
+  become: yes
+
+  roles:
+    - apache-simple
+----
+
+*Step 4:* Add some default variables to your role in `roles/apache-simple/defaults/main.yml`
+[source,bash]
+----
+---
+# defaults file for apache-simple
+apache_test_message: This is a test message
+apache_max_keep_alive_requests: 115
+----
+
+*Step 5:* Add some role-specific variables to your role in `roles/apache-simple/vars/main.yml`
+[source,bash]
+----
+---
+# vars file for apache-simple
+httpd_packages:
+  - httpd
+  - mod_wsgi
+----
+
 [NOTE]
 ====
-*Hey, wait just a minute there buster... didn't you just have us remove the `vars` directory?* +
+*Hey, wait just a minute there buster... did you just have us put variables in two seperate places?* +
 
 Yes... yes we did.  Variables can live in quite a few places.  Just to name a few: +
 
@@ -75,115 +117,88 @@ Yes... yes we did.  Variables can live in quite a few places.  Just to name a fe
 - In any file which can be specified on the command line using the `--extra_vars` option
 - On a boat, in a moat, with a goat  _(disclaimer:  this is a complete lie)_
 
-Bottom line, you need to read up on link:{var_prec_url}[variable precidence] to understand both where
-to define variables and which locations take precidence.  In this exercise, we are using role defaults
-to define our variables.
+Bottom line, you need to read up on link:{var_prec_url}[variable precedence] to understand both where
+to define variables and which locations take precedence.  In this exercise, we are using role defaults
+to define a couple of variables and these are the most malleable.  Next, we define some variables in vars
+which are not as easily overridden as defaults.
 ====
 
-====
-*Step 1:* Create a new playbook called `setup.yml`
-----
-% cd ~/telegraf
-% vim setup.yml
-----
-
-*Step 2:* Add a play
-
-[source,bash]
-----
-- hosts: web
-  become: yes
-  name: Setup telegraf on servers
-----
-
-*Step 3:* Add the `telegraf` role
-[source,bash]
-----
-  roles:
-    - telegraf
-----
-
-*Step 4:* Add some default variables to your role in `roles/telegraf/defaults/main.yml`
+*Step 6:* Create your role handler in `roles/apache-simple/handlers/main.yml`
 [source,bash]
 ----
 ---
-# defaults file for telegraf
-telegraf_version: 0.2.4
-influxdb_db_name: telegraf
-telegraf_flush_retries: 3
-influxdb_url: http://localhost:8086
-----
-
-*Step 5:* Create your role handler in `roles/telegraf/handlers/main.yml`
-[source,bash]
-----
----
-# handlers file for telegraf
-- name: restart telegraf
+# handlers file for apache-simple
+- name: restart apache service
   service:
-    name: telegraf
+    name: httpd
     state: restarted
+    enabled: yes
 ----
 
-*Step 6:* Add tasks to your role in `roles/telegraf/tasks/main.yml`
+*Step 7:* Add tasks to your role in `roles/apache-simple/tasks/main.yml`
 [source,bash]
 ----
 ---
-# tasks file for telegraf
-- name: Add InfluxDB repository file [RHEL/CentOS]
-  template:
-    src: influxdb.repo.j2
-    dest: /etc/yum.repos.d/influxdb.repo
-    force: yes
-    backup: yes
-
-- name: install telegraf
+# tasks file for apache-simple
+- name: install httpd packages
   yum:
-    name: telegraf-{{ telegraf_version }}
+    name: "{{ item }}"
     state: present
-  notify: restart telegraf
+  with_items: "{{ httpd_packages }}"
+  notify: restart apache service
 
-- name: configure telegraf
+- name: create site-enabled directory
+  file:
+    name: /etc/httpd/conf/sites-enabled
+    state: directory
+
+- name: copy httpd.conf
   template:
-    src: telegraf.conf.j2
-    dest: /etc/opt/telegraf/telegraf.conf
-  notify: restart telegraf
+    src: templates/httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  notify: restart apache service
 
-- name: start telegraf
+- name: copy index.html
+  template:
+    src: templates/index.html.j2
+    dest: /var/www/html/index.html
+
+- name: start httpd
   service:
-    name: telegraf
+    name: httpd
     state: started
     enabled: yes
 ----
-*Step 7:* Download a couple of templates into `roles/telegraf/templates/`
+*Step 8:* Download a couple of templates into `roles/apache-simple/templates/`.  And right after that, let's clean up for our
+last exercise by removing the old templates directory.
 [source,bash]
 ----
-% cd ~/telegraf/roles/telegraf/templates/
-% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/telegraf.conf.j2
-% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/influxdb.repo.j2
+% cd ~/apache-basic-playbook/roles/apache-simple/templates/
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/httpd.conf.j2
+% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/index.html.j2
+% rm -rf ~/apache-basic-playbook/templates/
+
 ----
 ====
 [.lead]
 Section 3: Running your new role-based playbook
 
-Now that you've successfully separated your single-file telegraf playbook into a role,
-let's run it.
-
-The only real difference here from exercise 2.2 is that you have to specify the new playbook called `setup.yml`
+Now that you've successfully separated your original playbook into a role,
+let's run it and see how it works.
 
 ====
 *Step 1:* Run the playbook
 ----
-% ansible-playbook -i ./hosts setup.yml -K
+% ansible-playbook -i ./hosts site.yml -K
 ----
 
 If successful, you're standard output should look similar to the figure below.
-image::stdout_3.png[caption="Figure 1: ", title="telegraf role-based playbook stdout"]
+image::stdout_3.png[caption="Figure 1: ", title="ansible-basic-playbook role-based playbook stdout"]
 
 [.lead]
 Section 3: Review
 
-You should now have a completed playbook with a single role called `telegraf`.  The advantage
+You should now have a completed playbook, `site.yml` with a single role called `apache-simple`.  The advantage
 of structuring your playbook into roles is that you can now add new roles to the playbook
 using Ansible Galaxy or simply writing your own.  In addition, roles simplify changes to variables, tasks,
 templates, etc.

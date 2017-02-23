@@ -1,6 +1,3 @@
-:file_url: http://docs.ansible.com/ansible/list_of_files_modules.html
-:handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
-
 = Exercise 2.2 - Running the apache-basic-playbook
 
 ---
@@ -43,4 +40,4 @@ Section 2: Review
 If successful, you should see standard output that looks very similar to the following.  If not, just let us
 know.  We'll help get things fixed up.
 
-image::stdout_2.png[caption="Figure 1: ", title="telegraf playbook stdout"]
+image::stdout_2.png[caption="Figure 1: ", title="apache-basic-playbook stdout"]
