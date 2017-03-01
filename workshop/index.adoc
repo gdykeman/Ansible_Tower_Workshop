@@ -1,9 +1,9 @@
 :badges:
 :icons:
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: http://tower.workshop.bos.redhatgov.io/_images
-:date: 16-March-2017
-:location: Pittsburgh, PA
+:imagesdir: http://tower.workshop.fl.redhatgov.io/_images
+:date: 08-March-2017
+:location: Tallahassee, FL
 :tower_url: https://ansible-tower.redhatgov.io
 :source-highlighter: highlight.js
 :source-language: yaml
