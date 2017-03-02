@@ -1,7 +1,7 @@
 :badges:
 :icons:
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: http://tower.workshop.fl.redhatgov.io/_images
+:imagesdir: http://ansible-workshop-fl.redhatgov.io/_images
 :date: 08-March-2017
 :location: Tallahassee, FL
 :tower_url: https://ansible-tower.redhatgov.io
