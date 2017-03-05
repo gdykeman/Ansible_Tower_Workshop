@@ -1,0 +1,77 @@
+:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
+:ansible-azure_url: https://github.com/gdykeman/ansible-azure
+:vault_url: http://docs.ansible.com/ansible/playbooks_vault.html
+:azure_rm_url: https://docs.ansible.com/ansible/guide_azure.html
+
+
+= Lession 3.0 - Provisioning with Microsoft Azure
+
+---
+
+== Exercise 3.1 - Azure Provisioning Demo
+
+---
+
+****
+This lesson is a hands-off demo, in which you can kick back and simply enjoy the show.
+
+You're instructor is going to walk you through a few of the major components of the link:{ansible-azure_url}[ansible-azure project].
+This project contains a playbook with two roles; one for deploying VMs, and one for tearing them down.
+
+
+[.lead]
+Section 1 - Playbook Structure
+
+The ansible-azure playbook has a few constructs which will look familiar, and a couple which will be new.
+
+image::pbdir_1.png[caption="Figure 1: ", title="ansible-azure project", link="{image_links}/pbdir_1.png"]
+
+The `ansible-azure` playbook contains a single playbook, several variables files, and two roles.
+
+[.lead]
+Section 2 - Playbook Content
+====
+*THE PLAYBOOK* +
+The playbook is called `site.yml` and it contains two roles which use tagging.  This type of tagging applies
+tags to every task inside of that role.  The way in which these are used is by specifying a tag on the command line.
+
+For example, to run this playbook and only call the `deploy` role, you would run it like this:
+----
+% ansible-playbook site.yml --tags "deploy"
+----
+
+[source,bash]
+----
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  roles:
+    - {role: deploy, tags: ['deploy']}
+    - {role: teardown, tags: ['teardown']}
+----
+====
+
+====
+*THE VARIBLES* +
+We are defining varibles for this playbook in three places +
+
+- *group_vars/all/vms.yml* Enables the user to define the VM hostnames which will be deployed and/or torn down +
+- *group_vars/all/vars.yml* Defines default variables +
+- *group_vars/all/vault.yml* Contains an password that was encrypted using Ansible Vault +
+
+link:{vault_url{[Ansible Vault] enables you to encrypt/decrypt senstive files and passwords.
+
+====
+====
+*THE ROLES*
+This playbook contains two roles; `deploy` and `teardown` .  Guess what they do! +
+
+The azure_rm* module family is used in both roles.  It includes a number of modules for managing virtual machines,
+NIC, storage accounts, etc.
+
+First, let take a look at a snippet of yaml from the `deploy` role.  This task creates the Linux VM.
+
+[source,bash]
+====
