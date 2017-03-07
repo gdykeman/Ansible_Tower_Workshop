@@ -6,10 +6,11 @@
 ****
 [IMPORTANT]
 Today's workshop infrastructure is being run in Amazon EC2. +
-Each of you should have received an email when late yesterday.  It has the following information on it. +
+You will be provided with your login information and credentials. +
 - *EC2 username/password* +
 - *IP Addresses for each of your EC2 instances* +
-If you didn't get one of these emails, let us know so we can give you the information about your lab environment.
+
+If you have not received login information please see a RedHat Rep.
 
 ****
 

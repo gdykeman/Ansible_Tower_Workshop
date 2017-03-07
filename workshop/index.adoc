@@ -83,29 +83,6 @@ ssid: `TBD`
 ====
 ****
 
-.Today's Team
-****
-
-[.lead]
-Frank DiMuzio - Emerging Technology Specialist
-
-
-[.lead]
-Gerald Dykeman - Domain Architect - Ansible
-
-Gerald joined Red Hat in August 2016 as a Domain Architect.  His focus is on all things Ansible Core and Tower as well
-as specializing in Ansible's network automation capabilities.
-Gerald has a networking background, previously working with a range of solutions from Small Business to
-Service Provider.  In the last couple years before joining Red Hat, he focused on using Ansible to automate OpenStack solutions.
-
-[.lead]
-Bill Hirsch - Solutions Architect
-
-Bill is a Solutions Architect with Red Hat focused on Northeast public sector accounts.  As an account SA, he is responsible for all Red Hat offerings,
-but has a passion for Ansible.  He has a background in Linux/Unix systems administration and IT operations leadership.
-
-
-****
 == Document Copyright
 
 This document was created by and for Red Hat, Inc. It is being released under link:https://creativecommons.org/licenses/by/4.0/[Creative Commons License 4.0]. You are free to re-use it in whole or in part.
