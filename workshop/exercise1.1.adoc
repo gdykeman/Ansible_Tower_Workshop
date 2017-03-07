@@ -1,6 +1,6 @@
 :source-highlighter: highlight.js
 
-= Lession 1.0 - Introduction to Ansible Core and Ansible Tower
+= Lession 1.0 - Introduction to Ansible Core
 
 ---
 

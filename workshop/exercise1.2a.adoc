@@ -7,7 +7,7 @@
 :image_links: https://s3.amazonaws.com/ansible-workshop-fl.redhatgov.io/_images
 
 
-= Exercise 1.2 - Writing Your First playbook
+= Exercise 1.2a - Writing Your First playbook
 
 ---
 
