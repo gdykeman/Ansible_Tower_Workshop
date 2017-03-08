@@ -2,13 +2,15 @@
 :ansible-azure_url: https://github.com/gdykeman/ansible-azure
 :vault_url: http://docs.ansible.com/ansible/playbooks_vault.html
 :azure_rm_url: https://docs.ansible.com/ansible/guide_azure.html
+:aws_url: https://docs.ansible.com/ansible/guide_aws.html
+:vmware_url: https://www.ansible.com/vmware
 
 
 = Lession 3.0 - Provisioning with Microsoft Azure
 
 ---
 
-== Exercise 3.1 - Azure Provisioning Demo
+== Azure Provisioning Demo
 
 ---
 
@@ -71,7 +73,53 @@ This playbook contains two roles; `deploy` and `teardown` .  Guess what they do!
 The azure_rm* module family is used in both roles.  It includes a number of modules for managing virtual machines,
 NIC, storage accounts, etc.
 
-First, let take a look at a snippet of yaml from the `deploy` role.  This task creates the Linux VM.
+First, let take a look at a snippet of yaml from the `deploy` role.  This task creates the Linux VM.  This is one of
+8 total tasks that are part of this role.  Technically, we could have used just this one task and allowed
+the Azure to create default services for the `resource group`, `storage account`, etc.  However, we wanted to control
+the specifics of those services.
+
 
 [source,bash]
+----
+- name: Create VM
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource }}"
+    name: "{{ item }}"
+    vm_size: "{{ vmsize }}"
+    admin_username: "{{ username }}"
+    admin_password: "{{ password }}"
+    image:
+     offer: CentOS
+     publisher: OpenLogic
+     sku: '7.2'
+     version: latest
+  with_items:
+    - "{{ vmname }}"
+----
 ====
+
+Next, we'll show you one of the tasks from the `teardown` role.  Essentially, it uses the same tasks from the `deploy` role, but
+in reverse and with one, very distinct difference; all tasks include `state: absent`.  Here is the task which removes the NIC.
+
+[source,bash]
+----
+- name: Delete network interface using existing security group and public IP
+  azure_rm_networkinterface:
+        name: "{{ item }}-nic"
+        resource_group: "{{ resource }}"
+        state: absent
+  with_items:
+     - "{{ vmname }}"
+----
+====
+
+[.lead]
+Section 3: Review
+
+Although this lesson was hands off, it demonstrates just how powerful, yet still simple it is to provision systems using
+Ansible.  Case in point; the Amazon instances you've been using all day were created last night using an Ansible playbook.
+There is a lot of good work out there on public/private cloud provisioning using Ansible, so we encourage you to check it out.
+
+link:{ansible-azure_url}[Getting Started with Ansible Azure] +
+link:{aws_url}[Amazon Web Services Guide] +
+link:{vmware_url}[Ansible and VMware]
