@@ -27,9 +27,9 @@
 * Exercise 1.5 - Configuring Ansible Tower - 1:20 - 1:45
 * Exercise 1.6 - Creating and Running a Job Template - 1:45 - 2:00
 * Exercise 2.1 - Using Variables, loops, and conditionals - 2:00 - 2:45
-* Exercise 2.2 - Testing playbook behavior - 2:30 - 2:45
-* Exercise 3.1 - Provisioning in Azure
-* Exercise 4.1 - Using Ansible in Windows
+* Exercise 2.2 - Running the apache-basic-playbook - 2:30 - 2:45
+* Exercise 2.3 - Using Roles - 2:45 - 3:30
+* Exercise 3.1 - Provisioning in Azure - 3:30 - 4:00
 * Resources, Wrap Up - 4:00 - 4:30
 ****
 
@@ -86,7 +86,7 @@ Location-Specific Information
 [NOTE]
 .WiFi Access
 ====
-ssid: `TBD`
+ssid: `N/A`
 ====
 ****
 
@@ -95,6 +95,9 @@ ssid: `TBD`
 
 [.lead]
 Frank DiMuzio - Emerging Technology Specialist
+Frank has been with Red Hat since 2012 as a Solution Architect and now as a specialist.  He provides Red Hat customers with
+strategic guidance and expertise around the architecture, design, and delivery of Red Hat's Emerging Technology portfolio.
+This includes cloud, storage, automation, and container solutions.
 
 
 [.lead]
@@ -108,7 +111,7 @@ Service Provider.  In the last couple years before joining Red Hat, he focused o
 [.lead]
 Bill Hirsch - Solutions Architect
 
-Bill is a Solutions Architect with Red Hat focused on Northeast public sector accounts.  As an account SA, he is responsible for all Red Hat offerings,
+Bill is a Solutions Architect with Red Hat focused on Northeast Government, Education, and Healthcare accounts.  As an account SA, he is responsible for all Red Hat offerings,
 but has a passion for Ansible.  He has a background in Linux/Unix systems administration and IT operations leadership.
 
 
