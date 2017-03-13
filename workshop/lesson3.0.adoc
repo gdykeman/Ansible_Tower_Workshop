@@ -67,7 +67,7 @@ link:{vault_url{[Ansible Vault] enables you to encrypt/decrypt senstive files an
 
 ====
 ====
-*THE ROLES*
+*THE ROLES* +
 This playbook contains two roles; `deploy` and `teardown` .  Guess what they do! +
 
 The azure_rm* module family is used in both roles.  It includes a number of modules for managing virtual machines,

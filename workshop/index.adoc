@@ -14,23 +14,19 @@
 
 .Today's Agenda
 ****
-* Arrivals - 8:30 - 9:00
-* Introductions / Agenda - 9:00 - 9:15
-* Presentation - 9:15 - 10:00
-* Setup - 10:00 - 10:15
-* Break - 10:15 - 10:30
-* Exercise 1.1 - Ad-Hoc Commands - 10:30 - 10:50
-* Exercise 1.2 - Writing Your First Playbook - 10:50 - 11:30
-* Exercise 1.3 - Running Your First Playbook - 11:30 - 12:00
-* Lunch - 12:00 - 1:00
-* Exercise 1.4 - Installing Ansible Tower - 1:00 - 1:20
-* Exercise 1.5 - Configuring Ansible Tower - 1:20 - 1:45
-* Exercise 1.6 - Creating and Running a Job Template - 1:45 - 2:00
-* Exercise 2.1 - Using Variables, loops, and conditionals - 2:00 - 2:45
-* Exercise 2.2 - Running the apache-basic-playbook - 2:30 - 2:45
-* Exercise 2.3 - Using Roles - 2:45 - 3:30
-* Exercise 3.1 - Provisioning in Azure - 3:30 - 4:00
-* Resources, Wrap Up - 4:00 - 4:30
+* Arrivals, Introductions
+* Workshop Setup
+* Exercise 1.1 - Ad-Hoc Commands
+* Exercise 1.2 - Writing Your First Playbook
+* Exercise 1.3 - Running Your First Playbook
+* Exercise 1.4 - Using Variables, loops, and handlers
+* Exercise 1.5 - Running the apache-basic-playbook
+* Exercise 1.6 - Roles: Making your playbooks reusable
+* Exercise 2.1 - Installing Ansible Tower
+* Exercise 2.2 - Configuring Ansible Tower
+* Exercise 2.3 - Creating and Running a Job Template
+* Exercise 3.1 - Provisioning in Azure
+* Resources, Wrap Up
 ****
 
 .Before We Get Started
@@ -95,6 +91,7 @@ ssid: `N/A`
 
 [.lead]
 Frank DiMuzio - Emerging Technology Specialist
+
 Frank has been with Red Hat since 2012 as a Solution Architect and now as a specialist.  He provides Red Hat customers with
 strategic guidance and expertise around the architecture, design, and delivery of Red Hat's Emerging Technology portfolio.
 This includes cloud, storage, automation, and container solutions.
@@ -111,8 +108,8 @@ Service Provider.  In the last couple years before joining Red Hat, he focused o
 [.lead]
 Bill Hirsch - Solutions Architect
 
-Bill is a Solutions Architect with Red Hat focused on Northeast Government, Education, and Healthcare accounts.  As an account SA, he is responsible for all Red Hat offerings,
-but has a passion for Ansible.  He has a background in Linux/Unix systems administration and IT operations leadership.
+Bill is a Solutions Architect with Red Hat focused on Northeast Government, Education, and Healthcare.  As an account SA, he is responsible for all Red Hat offerings,
+but takes a particular focus on Ansible.  He has a background in Linux/Unix systems administration and IT operations leadership.
 
 
 ****
