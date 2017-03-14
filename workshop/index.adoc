@@ -1,14 +1,14 @@
 :badges:
 :icons:
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: http://tower.workshop.bos.redhatgov.io/_images
+:imagesdir: http://tower.workshop.upmc.redhatgov.io/_images
 :date: 16-March-2017
 :location: Pittsburgh, PA
 :tower_url: https://ansible-tower.redhatgov.io
 :source-highlighter: highlight.js
 :source-language: yaml
 
-= Automation for Everyone
+= Ansible Essentials
 
 ---
 
@@ -92,9 +92,8 @@ ssid: `N/A`
 [.lead]
 Frank DiMuzio - Emerging Technology Specialist
 
-Frank has been with Red Hat since 2012 as a Solution Architect and now as a specialist.  He provides Red Hat customers with
-strategic guidance and expertise around the architecture, design, and delivery of Red Hat's Emerging Technology portfolio.
-This includes cloud, storage, automation, and container solutions.
+Frank is a member of Red Hat's Emerging Technology group. He provides customers with strategic guidance and expertise
+around the architecture, design, and delivery of Red Hat's cloud, storage, container, and automation solutions.
 
 
 [.lead]
