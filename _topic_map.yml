@@ -57,3 +57,5 @@ Dir: resources
 Topics:
   - Name: Links
     File: links
+  - Name: Decks
+    File: decks
