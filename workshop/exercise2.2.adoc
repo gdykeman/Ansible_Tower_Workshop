@@ -105,7 +105,7 @@ a source code management (SCM) system supported by Tower, including Git, Subvers
 
 |===
 |NAME |Ansible Workshop Project
-|DESCRIPTION|Boston workshop playbooks
+|DESCRIPTION|Workshop playbooks
 |ORGANIZATION|Default
 |SCM TYPE|Git
 |SCM URL| https://github.com/ansible/lightbulb
@@ -148,7 +148,7 @@ and this is how we are going to add an inventory for this workshop.
 
 |===
 |NAME |Ansible Workshop Inventory
-|DESCRIPTION|Boston workshop hosts
+|DESCRIPTION|Workshop hosts
 |ORGANIZATION|Default
 |===
 
@@ -166,7 +166,7 @@ ssh <username>@<IP_Address_of_your_control_node>
 ----
 *Step 6:* Use the ```tower-manage``` command to import an existing inventory.  (_Be sure to replace <username> with your actual username_)
 ----
-sudo tower-manage inventory_import --source=/home/<username>/lightbulb/lab_inventory/<username>-instances.txt --inventory-name="Ansible Workshop Inventory"
+sudo tower-manage inventory_import --source=/home/<username>/lightbulb/lessons/lab_inventory/<username>-instances.txt --inventory-name="Ansible Workshop Inventory"
 ----
 
 You should see output similar to the following:
@@ -196,5 +196,5 @@ image::at_inv_group_detail.png[caption="Figure 10: ",title="web inventory group 
 
 === End Result
 
-At this point, we are doing with our basic configuration of Ansible Tower.  In exercise 1.5, we will be soley focused on
+At this point, we are doing with our basic configuration of Ansible Tower.  In the next exercise, we will be soley focused on
 creating and running a job template so you can see Tower in action.
