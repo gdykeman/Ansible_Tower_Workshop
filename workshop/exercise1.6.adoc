@@ -80,7 +80,7 @@ In this section, we will separate out the major parts of your playbook including
 ----
 ---
 - hosts: web
-  name: This is a play within a playbook
+  name: This is my role-based playbook
   become: yes
 
   roles:
@@ -194,7 +194,7 @@ let's run it and see how it works.
 ====
 *Step 1:* Run the playbook
 ----
-% ansible-playbook -i ./hosts site.yml -K
+% ansible-playbook -i ./hosts site.yml -k
 ----
 
 If successful, you're standard output should look similar to the figure below.

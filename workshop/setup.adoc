@@ -11,6 +11,8 @@ Each of you should have received an email late yesterday.  It has the following 
 - *IP Addresses for each of your EC2 instances* +
 If you didn't get one of these emails, let us know so we can give you the information about your lab environment.
 
+The instructor has written your *password* for your instances at the front of the room.
+
 ****
 
 [.lead]

@@ -38,7 +38,7 @@ Instead, we are going to create a very simple directory structure for our playbo
 ----
 *Step 2:* Define your inventory.  Inventories are crucial to Ansible as they define remote machines on which you wish to run
 your playbook(s).  Use ```vi``` or ```vim``` to create a file called ```hosts```.  Then, add the appropriate definitions which can
-be viewed in ```~/lightbulb/lab_inventory/username-instances.txt```.  (And yes, I *suppose* you could copy the file, but we'd rather you type it in so you can
+be viewed in ```~/lightbulb/lessons/lab_inventory/username-instances.txt```.  (And yes, I *suppose* you could copy the file, but we'd rather you type it in so you can
 become familiar with the syntax)
 
 ----
