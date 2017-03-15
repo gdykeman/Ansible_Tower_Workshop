@@ -7,7 +7,7 @@
 :image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
 
 
-== Exercise 1.4 - Using Variables, Loops, and Handlers
+= Exercise 1.4 - Using Variables, Loops, and Handlers
 
 ---
 
