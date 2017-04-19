@@ -4,7 +4,7 @@
 :yum_url: http://docs.ansible.com/ansible/yum_module.html
 :service_url: http://docs.ansible.com/ansible/service_module.html
 :yaml_url: http://docs.ansible.com/ansible/YAMLSyntax.html
-:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
+:image_links: https://s3.amazonaws.com/ansible-workshop.redhatgov.io/_images
 
 
 = Exercise 1.2 - Writing Your First playbook

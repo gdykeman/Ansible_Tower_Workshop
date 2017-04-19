@@ -2,19 +2,19 @@
 
 ### Usage
 
-Install `ascii_binder`. 
+Install `ascii_binder`.
 
 	http://www.asciibinder.org/latest/guides/user_guide.html
 
 
-Use git to track your changes. 
+Use git to track your changes.
 
 ```
 $ git add .
 $ git commit -m "Initial commit on docs repo"
 ```
 
-Add a new folder to the repo full of the new `adoc`s you are commiting. 
+Add a new folder to the repo full of the new `adoc`s you are commiting.
 
 ```
 mkdir resources
@@ -38,4 +38,3 @@ Then build it with `asciibinder`. This will build a website with html, css, and 
 ```
 $ asciibinder
 ```
-

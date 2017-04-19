@@ -1,5 +1,5 @@
 :tower_url: https://your-control-node-ip-address
-:license_url: http://ansible-workshop-upmc.redhatgov.io/workshop-files/ansible_tower_license.txt
+:license_url: http://ansible-workshop.redhatgov.io/workshop-files/ansible_tower_license.txt
 = Lesson 2.0 - Introduction to Ansible Tower
 
 ---
@@ -23,12 +23,12 @@ cd /tmp
 Step 3: Download the latest Ansible Tower package
 [source,bash]
 ----
-curl -O http://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-3.0.3.tar.gz
+curl -O https://releases.ansible.com/ansible-tower/setup-bundle/ansible-tower-setup-bundle-latest.el7.tar.gz
 ----
 Step 4: Untar and unzip the package file
 [source,bash]
 ----
-tar xvfz /tmp/ansible-tower-setup-3.0.3.tar.gz
+tar xvfz /tmp/ansible-tower-setup-*  (Name of tar file that was downloaded)
 ----
 Step 5: Change directories into the ansible tower package
 [source,bash]

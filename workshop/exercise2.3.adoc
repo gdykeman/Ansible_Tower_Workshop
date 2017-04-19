@@ -1,6 +1,6 @@
 :tower_url: https://your-control-node-ip-address
-:license_url: http://ansible-workshop-upmc.redhatgov.io/wslic.txt
-:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
+:license_url: http://ansible-workshop.redhatgov.io/wslic.txt
+:image_links: https://s3.amazonaws.com/ansible-workshop.redhatgov.io/_images
 
 = Exercise 2.3 - Creating and Running a Job Template
 

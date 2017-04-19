@@ -4,7 +4,7 @@
 :loop_url: http://docs.ansible.com/ansible/playbooks_loops.html
 :handler_url: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
 :jinja2_url: http://docs.ansible.com/ansible/playbooks_templating.html
-:image_links: https://s3.amazonaws.com/ansible-workshop-upmc.redhatgov.io/_images
+:image_links: https://s3.amazonaws.com/ansible-workshop.redhatgov.io/_images
 
 
 = Exercise 1.4 - Using Variables, Loops, and Handlers
@@ -106,8 +106,8 @@ After that, you will define a task to start the start the apache service.
 ----
 % mkdir templates
 % cd templates
-% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/httpd.conf.j2
-% curl -O http://ansible-workshop-upmc.redhatgov.io/workshop-files/index.html.j2
+% curl -O http://ansible-workshop.redhatgov.io/workshop-files/httpd.conf.j2
+% curl -O http://ansible-workshop.redhatgov.io/workshop-files/index.html.j2
 ----
 
 *Step 2:* Add some file tasks and a service task to your playbook
