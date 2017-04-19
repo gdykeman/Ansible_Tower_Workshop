@@ -290,14 +290,22 @@ localhost ansible_connection=local
 
 [all:vars]
 admin_password=<strong>'ansibleWS'</strong>
-redis_password=<strong>'ansibleWS'</strong>
 
 pg_host=''
 pg_port=''
 
-pg_database=awx
-pg_username=awx
-pg_password=<strong>'ansibleWS'</strong></pre>
+pg_database='awx'
+pg_username='awx'
+pg_password=<strong>'ansibleWS'</strong>
+
+rabbitmq_port=5672
+rabbitmq_vhost=tower
+rabbitmq_username=tower
+rabbitmq_password=<strong>'ansibleWS'</strong>
+rabbitmq_cookie=cookiemonster
+
+# Needs to be true for fqdns and ip addresses
+rabbitmq_use_long_name=false</pre>
 </div>
 </div>
 <div class="paragraph">
