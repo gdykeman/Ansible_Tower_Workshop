@@ -1,7 +1,7 @@
 :badges:
 :icons:
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-#:imagesdir: http://tower.workshop.upmc.redhatgov.io/_images
+:imagesdir: http://tower.workshop.upmc.redhatgov.io/_images
 :tower_url: https://ansible-tower.redhatgov.io
 :source-highlighter: highlight.js
 :source-language: yaml
