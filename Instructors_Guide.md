@@ -14,11 +14,11 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
 2. An existing administrator (Shawn or other admin) will need to add you as a user to IAM with the following:
         - RHTGOV_ADMINS group
 3. Once account is added to this group, you will be able to login and configure your account further.
-        - Using the IAM service, configure an "Assigned MFA Device" (your phone probably)
-        - Create an "Access Key"
-            - This key will contain an "access key" and a "secret key" giving you the option to download a .csv with the same information.  This is the only time you'll be able to retain that key, i.e. don't lose it.  You'll be using this key later on your laptop during the aws_lab_setup playbook.
- 4. Navigate to the EC2 service
-        - Generate your own keypair and place the <keypair>.pem file into your ~username/.ssh/ directory (This is the ssh key that will enable you to perform post-provisioning ansible tasks on EC2 instances from your laptop to the redhatgov.io AWS account, as well as login to the instances you've created)
+   - Using the IAM service, configure an "Assigned MFA Device" (your phone probably)
+   - Create an "Access Key"
+   - This key will contain an "access key" and a "secret key" giving you the option to download a .csv with the same information.  This is the only time you'll be able to retain that key, i.e. don't lose it.  You'll be using this key later on your laptop during the aws_lab_setup playbook.
+4. Navigate to the EC2 service
+   - Generate your own keypair and place the <keypair>.pem file into your ~username/.ssh/ directory (This is the ssh key that will enable you to perform post-provisioning ansible tasks on EC2 instances from your laptop to the redhatgov.io AWS account, as well as login to the instances you've created)
 
 ## Hosting student documentation and slides
 
@@ -28,16 +28,16 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
 
 ### NOTE:  If you need to modify existing documentation
 
- 1. Email bhirsch@redhat.com to either have a new branch created or be added as contributor to https://github.com/bhirsch70/Ansible_Tower_Workshop
- 2. Spend a little time with the README to understand this project's structure and asciibinder
- 3. git clone -b <your_branch>  https://github.com/bhirsch70/Ansible_Tower_Workshop
- 4. Use Atom or another asciidoctor-aware IDE to edit your workshop content
+1. Email bhirsch@redhat.com to either have a new branch created or be added as contributor to https://github.com/bhirsch70/Ansible_Tower_Workshop
+2. Spend a little time with the README to understand this project's structure and asciibinder
+3. git clone -b <your_branch>  https://github.com/bhirsch70/Ansible_Tower_Workshop
+4. Use Atom or another asciidoctor-aware IDE to edit your workshop content
     * You should primarily be working with Ansible_Tower_Workshop/[ workshop/\\* | _topic_map.yml ]
     * Once editing is complete, commit, push, and render
-
-        `git commit workshop -m "<insert change log comment>"`
-
-        `git push`
+    
+    `git commit workshop -m "<insert change log comment>"`
+    
+    `git push`
 
 5. install asciibinder - http://www.asciibinder.org/
 6. From your local project copy of Ansible_Tower_Workshop...
