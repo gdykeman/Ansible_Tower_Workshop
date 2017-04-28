@@ -36,7 +36,9 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
     * Once editing is complete, commit, push, and render
     
         `git commit workshop -m "<insert change log comment>"`
-        - git push
+        
+        `git push`
+        
         - install asciibinder - http://www.asciibinder.org/
         - From your local project copy of Ansible_Tower_Workshop...
         - asciibinder clean
