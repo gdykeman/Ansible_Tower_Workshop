@@ -39,29 +39,29 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
 
         `git push`
 
-  5. install asciibinder - http://www.asciibinder.org/
-  6. From your local project copy of Ansible_Tower_Workshop...
+5. install asciibinder - http://www.asciibinder.org/
+6. From your local project copy of Ansible_Tower_Workshop...
 
      `asciibinder clean`
 
       `asciibinder`
 
       * Your rendered html will be your local copy of Ansible_Tower_Workshop/preview/
-  7. Navigate to the S3 service
-    1. Looking at existing S3 buckets in AWS, copy the ansible-tower.redhatgov.io bucket
-     * Edit Permissions-->Bucket Policy for the ansible-tower.redhatgov.io bucket and copy the content
-     * Cancel the Editing process for that bucket
-     * Select your new S3 bucket and Edit Permission-->Add Bucket Policy and paste previously copied content
-     * Edit the "Resource:" with the new bucket name and Save
-     * Edit Properties-->Static Website Hosting and select "Use this bucket to host a website" and enter "index.html" under index document.  Save
-     * Because you made a copy of the ansible-tower-redhatgov.io bucket, you should have the following directories in your bucket
-            - _images
-            - decks
-            - standard
-            - workshop-files
-            - index.html
-      * Delete the folder called "standard"
-      * Click the "upload" button, and upload the contents from your Ansible_Tower_Workshop/_preview/red-hat-public-sector/* folder.  This is your recently edited, html content.
+7. Navigate to the S3 service
+  1. Looking at existing S3 buckets in AWS, copy the ansible-tower.redhatgov.io bucket
+  2. Edit Permissions-->Bucket Policy for the ansible-tower.redhatgov.io bucket and copy the content
+  3. Cancel the Editing process for that bucket
+  4. Select your new S3 bucket and Edit Permission-->Add Bucket Policy and paste previously copied content
+  5. Edit the "Resource:" with the new bucket name and Save
+  6. Edit Properties-->Static Website Hosting and select "Use this bucket to host a website" and enter "index.html" under index document.  Save
+  7. Because you made a copy of the ansible-tower-redhatgov.io bucket, you should have the following directories in your bucket
+    * _images
+    * decks
+    * standard
+    * workshop-files
+    * index.html
+  8. Delete the folder called "standard"
+  9. Click the "upload" button, and upload the contents from your Ansible_Tower_Workshop/_preview/red-hat-public-sector/* folder.  This is your recently edited, html content.
         - Back in your local git clone, modify the Ansible_Tower_Workshop/index.html to point to your new bucket and do the git stuff to it (commit, push)
         - In your S3 bucket, delete the existing index.html file and upload a copy of the new one
     - Navigate to the AWS route53 service
