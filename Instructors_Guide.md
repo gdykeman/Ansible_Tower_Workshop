@@ -10,69 +10,69 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
 
 ## Access to an AWS account
 
-1. Gain access to the redhatgov.io https://us-east-1.signin.aws.amazon.com Amazon AWS account -  Shawn Wells is the owner/maintainer of this account.
+1. Gain access to the [redhatgov.io](https://us-east-1.signin.aws.amazon.com) Amazon AWS account -  Shawn Wells is the owner/maintainer of this account.
 2. An existing administrator (Shawn or other admin) will need to add you as a user to IAM with the following:
         - RHTGOV_ADMINS group
 3. Once account is added to this group, you will be able to login and configure your account further.
-   - Using the IAM service, configure an "Assigned MFA Device" (your phone probably)
-   - Create an "Access Key"
-   - This key will contain an "access key" and a "secret key" giving you the option to download a .csv with the same information.  This is the only time you'll be able to retain that key, i.e. don't lose it.  You'll be using this key later on your laptop during the aws_lab_setup playbook.
+   - Using the IAM service, configure an __Assigned MFA Device__ (your phone probably)
+   - Create an _access Key_
+   - This key will contain an __access key__ and a __secret key__ giving you the option to download a .csv with the same information.  This is the only time you'll be able to retain that key, i.e. don't lose it.  You'll be using this key later on your laptop during the aws_lab_setup playbook.
 4. Navigate to the EC2 service
-   - Generate your own keypair and place the <keypair>.pem file into your ~username/.ssh/ directory (This is the ssh key that will enable you to perform post-provisioning ansible tasks on EC2 instances from your laptop to the redhatgov.io AWS account, as well as login to the instances you've created)
+   - Generate your own __keypair__ and place the `<keypair>.pem` file into your `~username/.ssh/` directory .This is the ssh key that will enable you to perform post-provisioning ansible tasks on EC2 instances from your laptop to the redhatgov.io AWS account, as well as login to the instances you've created.
 
 ## Hosting student documentation and slides
 
 * A general student guide and instructor slides are already hosted at http://ansible-workshop.redhatgov.io
-* Here you will find complete student instructions for each exercise as well as the presentation decks under the "Resources" drop down.
+* Here you will find complete student instructions for each exercise as well as the presentation decks under the __Resources__ drop down.
 * During the workshop, it is recommended that you have a second screen or printed copy of both.  Previous workshops have demonstrated that unless you've memorized all of it, you'll likely need to refer to these, but your laptop will most likely be projecting.  Some students will fall behind and you'll need to refer back to other exercises/slides without having to change the projection for the entire class.
 
 ### NOTE:  If you need to modify existing documentation
 
-1. Email bhirsch@redhat.com to either have a new branch created or be added as contributor to https://github.com/bhirsch70/Ansible_Tower_Workshop
+1. Email bhirsch@redhat.com to either have a new branch created or be added as contributor to [Ansible_Tower_Workshop](https://github.com/bhirsch70/Ansible_Tower_Workshop) github project.
 2. Spend a little time with the README to understand this project's structure and asciibinder
-3. git clone -b <your_branch>  https://github.com/bhirsch70/Ansible_Tower_Workshop
+3. `git clone -b <your_branch>  https://github.com/bhirsch70/Ansible_Tower_Workshop`
 4. Use Atom or another asciidoctor-aware IDE to edit your workshop content
-    * You should primarily be working with Ansible_Tower_Workshop/[ workshop/\\* | _topic_map.yml ]
+    * You should primarily be working with `Ansible_Tower_Workshop/[ workshop/\\* | _topic_map.yml ]`
     * Once editing is complete, commit, push, and render
     
     `git commit workshop -m "<insert change log comment>"`
     
     `git push`
 
-5. install asciibinder - http://www.asciibinder.org/
+5. [Install asciibinder](http://www.asciibinder.org/)
 6. From your local project copy of Ansible_Tower_Workshop...
 
      `asciibinder clean`
 
       `asciibinder`
 
-      * Your rendered html will be your local copy of Ansible_Tower_Workshop/preview/
+      * Your rendered html will be your local copy of `Ansible_Tower_Workshop/_preview/`
 7. Navigate to the S3 service
-   1. Looking at existing S3 buckets in AWS, copy the ansible-tower.redhatgov.io bucket
-   2. Edit Permissions-->Bucket Policy for the ansible-tower.redhatgov.io bucket and copy the content
+   1. Looking at existing S3 buckets in AWS, copy the __ansible-tower.redhatgov.io__ bucket
+   2. Edit `Permissions-->Bucket Policy` for the __ansible-tower.redhatgov.io__ bucket and copy the content
    3. Cancel the Editing process for that bucket
-   4. Select your new S3 bucket and Edit Permission-->Add Bucket Policy and paste previously copied content
-   5. Edit the "Resource:" with the new bucket name and Save
-   6. Edit Properties-->Static Website Hosting and select "Use this bucket to host a website" and enter "index.html" under index document.  Save
+   4. Select your new S3 bucket and Edit `Permission-->Add Bucket Policy` and paste previously copied content
+   5. Edit the `Resource:` with the new bucket name and `Save`
+   6. Edit `Properties-->Static Website Hosting` and select `Use this bucket to host a website` and enter `index.html` under index document.  `Save`
    7. Because you made a copy of the ansible-tower-redhatgov.io bucket, you should have the following directories in your bucket
-    * _images
-    * decks
-    * standard
-    * workshop-files
-    * index.html
-   8. Delete the folder called "standard"
-   9. Click the "upload" button, and upload the contents from your Ansible_Tower_Workshop/_preview/red-hat-public-sector/* folder.  This is your recently edited, html content.
-   10. Back in your local git clone, modify the Ansible_Tower_Workshop/index.html to point to your new bucket and do the git stuff to it (commit, push)
-   11. In your S3 bucket, delete the existing index.html file and upload a copy of the new one
+    * `_images`
+    * `decks`
+    * `standard`
+    * `workshop-files`
+    * `index.html`
+   8. Delete the folder called `standard`
+   9. Click the `upload` button, and upload the contents from your `Ansible_Tower_Workshop/_preview/red-hat-public-sector/*` folder.  This is your recently edited, html content.
+   10. Back in your local git clone, modify the `Ansible_Tower_Workshop/index.html` to point to your new bucket and do the git stuff to it (commit, push)
+   11. In your S3 bucket, delete the existing `index.html` file and upload a copy of the new one
 8. Navigate to the AWS route53 service
    1. Select Hosted Zone
    2. Select redhatgov.io
    3. Create a record set
-       - Name = your bucket name minus the .redhatgov.io
-       - Alias = Yes
-       - Alias Target = being typing "s3-website" and it should prepopulate, but the result should be s3-website-us-east-1.amazonaws.com.
-       - Save your record set
-       - Now, you should be able to navigate to http://<whatever you named your bucket> and see your student guides.  If not, hmm... Most likely are A) Route53 screwup, B) index.html screwup, C) Bucket Policy screwup or you forgot to do step - enable "Use this bucket to host a website"
+     - Name = your bucket name minus the .redhatgov.io
+     - Alias = Yes
+     - Alias Target = being typing "s3-website" and it should prepopulate, but the result should be s3-website-us-east-1.amazonaws.com.
+     - Save your record set
+     - Now, you should be able to navigate to `http://<whatever you named your bucket>` and see your student guides.  If not, hmm... Most likely are A) Route53 screwup, B) index.html screwup, C) Bucket Policy screwup or you forgot to do step - enable `Use this bucket to host a website`
 
 ## Building AWS instances for students
 
