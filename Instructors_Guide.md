@@ -68,11 +68,11 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
    1. Select Hosted Zone
    2. Select redhatgov.io
    3. Create a record set
-     - Name = your bucket name minus the .redhatgov.io
-     - Alias = Yes
-     - Alias Target = being typing "s3-website" and it should prepopulate, but the result should be s3-website-us-east-1.amazonaws.com.
-     - Save your record set
-     - Now, you should be able to navigate to `http://<whatever you named your bucket>` and see your student guides.  If not, hmm... Most likely are A) Route53 screwup, B) index.html screwup, C) Bucket Policy screwup or you forgot to do step - enable `Use this bucket to host a website`
+      - Name = your bucket name minus the .redhatgov.io
+      - Alias = Yes
+      - Alias Target = being typing "s3-website" and it should prepopulate, but the result should be s3-website-us-east-1.amazonaws.com.
+      - Save your record set
+      - Now, you should be able to navigate to `http://<whatever you named your bucket>` and see your student guides.  If not, hmm... Most likely are A) Route53 screwup, B) index.html screwup, C) Bucket Policy screwup or you forgot to do step - enable `Use this bucket to host a website`
 
 ## Building AWS instances for students
 
