@@ -41,13 +41,14 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
 
   5. install asciibinder - http://www.asciibinder.org/
   6. From your local project copy of Ansible_Tower_Workshop...
+
      `asciibinder clean`
 
       `asciibinder`
 
       * Your rendered html will be your local copy of Ansible_Tower_Workshop/preview/
   7. Navigate to the S3 service
-     7.1 Looking at existing S3 buckets in AWS, copy the ansible-tower.redhatgov.io bucket
+    1. Looking at existing S3 buckets in AWS, copy the ansible-tower.redhatgov.io bucket
      * Edit Permissions-->Bucket Policy for the ansible-tower.redhatgov.io bucket and copy the content
      * Cancel the Editing process for that bucket
      * Select your new S3 bucket and Edit Permission-->Add Bucket Policy and paste previously copied content
