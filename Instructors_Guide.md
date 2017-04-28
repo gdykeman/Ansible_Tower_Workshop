@@ -76,20 +76,19 @@ In addition to having some core Ansible and Ansible Tower skills, hosting a succ
 
 ## Building AWS instances for students
 
-1. If you don't already have it, get yourself setup with git on your laptop. https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+1. If you don't already have it, [get yourself setup with git on your laptop](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 2. git clone [lightbulb](https://github.com/ansible/lightbulb)
-3. Read EVERYTHING.  The goal here is not to rewrite instructions, so it's important to read about Lightbulb, it's philosophy, and intent before attempting to build and run a workshop.
-4. Follow lightbulb instructions for the aws_lab_setup playbook.
-5. Modifications to aws_lab_setup need to be made for this specific workshop and are as follows:  These changes were submitted to the lightbulb project by gdykeman, but to my knowledge, they still have not been merged.
-6. Create an "Instances" directory under the lightbulb/aws_lab_setup/ subdirectory.  This is more organizational than anything else as the playbook will otherwise dump inventories for every student directly in the aws_lab_setup directory and that can get messy.
-7. Once you create this directory, you must modify the lightbulb/tools/aws_lab_setup/roles/manage_ec2_instances/tasks/create.yml file, to incorporate that directory 'generate student inventory' and 'generate instructor inventory' tasks for the 'dest:' parameter.
-
-8. Create a third inventory type that is  appropriate for email.  Currently, lightbulb emails the student's inventory to them after the ec2 instances are built, but it includes the instances username and password, which is a security concern.  This has also been submitted to the project as an issue.
-9. modify the lightbulb/tools/aws_lab_setup/roles/manage_ec2_instances/tasks/create.yml file, and duplicate the 'generate student inventory' task.  Rename the duplicate task 'generate student inventories for email' and modify the 'src:' with 'instances-nopass.txt.j2'
-10. copy the 'lightbulb/aws_lab_setup/roles/manage_ec2_instances/templates/instance.txt.j2'  to 'instances-nopass.txt.j2' in the same directory.
-11. Edit the `instances-nopass.txt.j2` and remove the second line 'ansible_ssh_pass={{ admin_password }}' and save that new file
-12. Modify the 'lightbulb/aws_lab_setup/roles/email/tasks/tasks.yml' file in the following ways
-    - Remove the reference to the "password" in the body to read something like "... and the password will be given during the workshop."
-    - Modify the attachment configuration to attach the 'instances-nopass.txt.j2'
-13. Follow the remaining lightbulb instructions, i.e. extra_vars.yml and users.yml
-- Once you launch 'ansible-playbook provision_lab.yml -e @extra_vars.yml -e @users.yml' pay close attention.  We've had failures before.  In fact, I recommend adding 'email: no' into you extra_vars.yml file initially so that your students are not sent an email.  Then, once you've successfully deployed all instances and they are fully configured, change 'email: yes' and rerun the playbook.  The reasoning is that during one of our workshop preps, some of the hosts were provisioned, but had to be destroyed and new ones created.  This resulted in some student receiving multiple emails.
+3. Read __everything__.  The goal here is not to rewrite existing instructions, so it's important to read about Lightbulb, it's philosophy, and intent before attempting to build and run a workshop.  This __Instructor's Guide__ you are reading right now does not re-write __lightbulb__ instructions.
+4. Follow [lightbulb instructions](https://github.com/ansible/lightbulb/tree/master/tools/aws_lab_setup) for the aws_lab_setup playbook.
+5. Modifications to `aws_lab_setup` need to be made for this specific workshop and are as follows:  _These changes were submitted to the lightbulb project by gdykeman, but to my knowledge, they still have not been merged._
+   6. Create an `instances` directory under the `lightbulb/aws_lab_setup/` subdirectory.  This is more organizational than anything else as the playbook will otherwise dump inventories for every student directly in the `aws_lab_setup` directory and that can get messy.
+   7. Once you create this directory, you must modify the `lightbulb/tools/aws_lab_setup/roles/manage_ec2_instances/tasks/create.yml` file, to incorporate that directory `generate student inventory` and `generate instructor inventory` tasks for the `dest:` parameter.
+   8. Create a third inventory type that is appropriate for email: _Currently, lightbulb emails the student's inventory to them after the ec2 instances are built, but it includes the instances username and password, which is a security concern.  This has also been submitted to the project as an issue_
+      9. modify the `lightbulb/tools/aws_lab_setup/roles/manage_ec2_instances/tasks/create.yml` file, and duplicate the `generate student inventory` task.  Rename the duplicate task `generate student inventories for email` and modify the `src:` with `instances-nopass.txt.j2`
+      10. copy the `lightbulb/aws_lab_setup/roles/manage_ec2_instances/templates/instance.txt.j2`  to `instances-nopass.txt.j2` in the same directory.
+      11. Edit the `instances-nopass.txt.j2` and remove the second line `ansible_ssh_pass={{ admin_password }}` and save that new file
+      12. Modify the `lightbulb/aws_lab_setup/roles/email/tasks/tasks.yml` file in the following ways
+          - Remove the reference to the `password` in the body to read something like "... and the password will be given during the workshop."
+          - Modify the attachment configuration to attach the `instances-nopass.txt.j2`
+6. Follow the remaining lightbulb instructions, i.e. `extra_vars.yml` and `users.yml`
+   - Once you launch `ansible-playbook provision_lab.yml -e @extra_vars.yml -e @users.yml` pay close attention.  We've had failures before.  In fact, I recommend adding `email: no` into you `extra_vars.yml` file initially so that your students are not sent an email.  Then, once you've successfully deployed all instances and they are fully configured, change `email: yes` and rerun the playbook.  The reasoning is that during one of our workshop preps, some of the hosts were provisioned, but had to be destroyed and new ones created.  This resulted in some student receiving multiple emails.
