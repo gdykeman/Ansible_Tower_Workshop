@@ -44,10 +44,8 @@ Step 7: fill a few variables out in an inventory file: ```admin_password, redis_
 
 [subs=+quotes]
 ----
-[primary]
+[tower]
 localhost ansible_connection=local
-
-[secondary]
 
 [database]
 
