@@ -148,7 +148,7 @@ Directory: /home/studentX/apache-basic-playbook
   module family and we encourage you to check out all of the other link:{file_url}[file-management modules here].
 - *jinja-who?* - Not to be confused with 2013's blockbuster "Ninja II - Shadow of a Tear", link:{jinja2_url}[jinja2] is
 used in Ansible to transform data inside a template expression, i.e. filters.
-- *service* - The Service module starts/stops/restarts services.
+- *service* - The Service module starts, stops, restarts, enables, and disables services.
 ====
 
 ***
