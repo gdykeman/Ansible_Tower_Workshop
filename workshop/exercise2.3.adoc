@@ -69,7 +69,7 @@ image::at_survey_detail.png[caption="Figure 12: ",title="Survey Form",link="{ima
 [.lead]
 Running a Job Template
 
-Now that you've sucessfully creating your Job Template, you are ready to launch it.
+Now that you've sucessfully created your Job Template, you are ready to launch it.
 Once you do, you will be redirected to a job screen which is refreshing in realtime
 showing you the status of the job.
 

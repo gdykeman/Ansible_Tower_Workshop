@@ -13,8 +13,8 @@ In this exercise, we are going to configure Tower so that we can run a playbook.
 [.lead]
 The Tower UI
 
-There are a number of contructs in the Ansible Tower UI that enable multi-tenancy, notifications, scheduling, etc.
-However, we are only going to focus on a few of the key contructs that are required for this workshop today.
+There are a number of constructs in the Ansible Tower UI that enable multi-tenancy, notifications, scheduling, etc.
+However, we are only going to focus on a few of the key constructs that are required for this workshop today.
 
 
 * Credentials

@@ -40,7 +40,7 @@ Step 6: Using an editor of your choice, open the inventory file
 ----
 vi inventory
 ----
-Step 7: fill a few variables out in an inventory file: ```admin_password, redis_password, pg_password```
+Step 7: fill a few variables out in an inventory file: ```admin_password, rabbitmq_password, pg_password```
 
 [subs=+quotes]
 ----
