@@ -33,8 +33,8 @@ Instead, we are going to create a very simple directory structure for our playbo
 ====
 *Step 1:* Create a directory called *apache_basic* in your home directory and change directories into it
 ----
-% mkdir ~/apache_basic
-% cd ~/apache_basic
+ mkdir ~/apache_basic
+ cd ~/apache_basic
 ----
 *Step 2:* Define your inventory.  Inventories are crucial to Ansible as they define remote machines on which you wish to run
 your playbook(s).  Use ```vi``` or ```vim``` to create a file called ```hosts```.  Then, add the appropriate definitions which can
@@ -46,7 +46,7 @@ become familiar with the syntax)
 node-1 ansible_host=<IP Address of your node-1>
 node-2 ansible_host=<IP Address of your node-2>
 ----
-*Step 3:* Use ```vi``` or ```vim``` to open a file called ```install_apache.yml```
+*Step 3:* Use ```vi``` or ```vim``` to create a file called ```install_apache.yml```
 
 ====
 

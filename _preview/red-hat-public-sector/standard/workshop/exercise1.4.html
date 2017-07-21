@@ -485,6 +485,59 @@ looks the way you intended.  If not, now is the time for us to fix it up. The fi
 </div>
 <div class="title">Figure 1: Completed Playbook - w/Spacing</div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>- hosts: web
+  name: This is a play within a playbook
+  become: yes
+  vars:
+    httpd_packages:
+      - httpd
+      - mod_wsgi
+    apache_test_message: This is a test message
+    apache_max_keep_alive_requests: 115
+
+  tasks:
+    - name: httpd packages are present
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ httpd_packages }}"
+      notify: restart apache service
+
+    - name: site-enabled directory is present
+      file:
+        name: /etc/httpd/conf/sites-enabled
+        state: directory
+
+    - name: latest httpd.conf is present
+      template:
+        src: templates/httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+      notify: restart apache service
+
+    - name: latest index.html is present
+      template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html
+
+    - name: httpd is started and enabled
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: restart apache service
+      service:
+        name: httpd
+        state: restarted</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
       </div>
