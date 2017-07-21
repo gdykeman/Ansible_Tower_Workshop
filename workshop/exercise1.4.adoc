@@ -102,7 +102,9 @@ case, we'll leverage the `file` and `template` modules.
 After that, you will define a task to start the start the apache service.
 
 ====
-*Step 1:* Create a `templates` directory in your project directory and download two files.
+*Step 1:* Create a `templates` directory in your apache-basic-playbook directory and download two files.
+
+Directory: /home/studentX/apache-basic-playbook
 ----
 % mkdir templates
 % cd templates
