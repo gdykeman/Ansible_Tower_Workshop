@@ -1,5 +1,7 @@
 :image_links: https://s3.amazonaws.com/ansible-workshop.redhatgov.io/_images
 :var_prec_url: http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
+:dir_url: http://docs.ansible.com/ansible/playbooks_best_practices.html
+
 
 = Exercise 1.6 - Roles: Making your playbooks reusable
 
