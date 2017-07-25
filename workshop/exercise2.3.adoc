@@ -13,11 +13,12 @@ Job templates are useful to execute the same job many times.
 Creating a Job Template
 
 ====
-*Step 1:* Select JOB TEMPLATES +
+*Step 1:* Select TEMPLATES +
 
 *Step 2:* Click on ADD image:at_add.png[Add,35,25] +
 
-*Step 3:* Complete the form using the following values +
+*Step 3:* Complete the form using the following values and *SAVE* +
+
 
 |===
 |NAME |Apache Basic Job Template
