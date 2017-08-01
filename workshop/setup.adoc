@@ -8,7 +8,7 @@
 Today's workshop infrastructure is being run in Amazon EC2. +
 Each student will be assigned a number, e.g. student1, student2, student3  +
 Your instructor will supply you with a web site url or IP address where you will find detailed info for +
-your own personal lab environment.
+your own personal lab environment. +
 - *EC2 username* +
 - *EC2 password* +
 - *IP Addresses for each of your EC2 instances* +
