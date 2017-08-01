@@ -6,12 +6,12 @@
 ****
 [IMPORTANT]
 Today's workshop infrastructure is being run in Amazon EC2. +
-Each of you should have received an email late yesterday.  It has the following information on it. +
+Each student will be assigned a number, e.g. student1, student2, student3  +
+Your instructor will supply you with a web site url or IP address where you will find detailed info for +
+your own personal lab environment.
 - *EC2 username* +
+- *EC2 password* +
 - *IP Addresses for each of your EC2 instances* +
-If you didn't get one of these emails, let us know so we can give you the information about your lab environment.
-
-The instructor has written your *password* for your instances at the front of the room.
 
 ****
 
@@ -22,9 +22,6 @@ Each student's personal EC2 lab is equipped with the following:
 ****
 * (1) Control node (to run ansible plays and install Ansible Tower).
 * (2) Endpoint nodes (to execute ansible playbooks upon).
-** _All three of the afore mentioned nodes are running Red Hat Enterprise Linux 7.2_
-* Ansible Core 2.2
-* Ansible Tower 3.0.3
 
 .Setup Your Environment
 ****
