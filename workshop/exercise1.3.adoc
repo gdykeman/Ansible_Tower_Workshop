@@ -19,7 +19,7 @@ However, before you go ahead and run that command, lets take a few moments to un
 
 - *-i* This option allows you to specify the inventory file you wish to use.
 - *-k* This option prompts you for the password of the user running the playbook.
-- *-v* Altough not used here, this increases verbosity.  Try running your playbook a second time using ```-v``` or ```-vv``` to increase the verbosity
+- *-v* Although not used here, this increases verbosity.  Try running your playbook a second time using ```-v``` or ```-vv``` to increase the verbosity
 [NOTE]
 - *--syntax-check* If you run into any issues with your playbook running properly; you know, from that copy/pasting that you didn't do because we said "_don't do that_"; you could use this option to help find those issues like so...
 
