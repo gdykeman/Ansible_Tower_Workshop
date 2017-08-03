@@ -72,12 +72,12 @@ workshop, we are using a *machine* credential.
 
 |===
 |NAME |Ansible Workshop Credential
-|DESCRIPTION|Machine credential for run job templates during workshop
+|DESCRIPTION|Credentials for Ansible Workshop
 |ORGANIZATION|Default
 |TYPE|Machine
-|USERNAME| Your Workshop Username
+|USERNAME| Your Workshop Username - Student(x)
 |PASSWORD| Your Workshop Password
-|PRIVILEGE ESCALATION|Sudo
+|PRIVILEGE ESCALATION|Sudo (This is the default)
 |===
 
 ---
@@ -114,7 +114,7 @@ a source code management (SCM) system supported by Tower, including Git, Subvers
 a|
 
 - [*] Clean
-- [*] Delete on Update
+- [ ] Delete on Update
 - [*] Update on Launch
 |===
 
@@ -129,7 +129,7 @@ image::at_project_detail.png[caption="Figure 6: ",title="Defining a Project",lin
 ====
 
 [.lead]
-Creating a Inventory
+Creating an Inventory
 
 An inventory is a collection of hosts against which jobs may be launched.
 Inventories are divided into groups and these groups contain the actual hosts.
@@ -148,7 +148,7 @@ and this is how we are going to add an inventory for this workshop.
 
 |===
 |NAME |Ansible Workshop Inventory
-|DESCRIPTION|Workshop hosts
+|DESCRIPTION|Ansible Inventory
 |ORGANIZATION|Default
 |===
 
