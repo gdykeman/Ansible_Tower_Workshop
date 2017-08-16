@@ -89,7 +89,7 @@ In this section, we will separate out the major parts of your playbook including
     - apache-simple
 ----
 
-*Step 4:* Add some default variables to your role in `roles/apache-simple/defaults/main.yml`
+*Step 3:* Add some default variables to your role in `roles/apache-simple/defaults/main.yml`
 [source,bash]
 ----
 ---
@@ -98,7 +98,7 @@ apache_test_message: This is a test message
 apache_max_keep_alive_requests: 115
 ----
 
-*Step 5:* Add some role-specific variables to your role in `roles/apache-simple/vars/main.yml`
+*Step 4:* Add some role-specific variables to your role in `roles/apache-simple/vars/main.yml`
 [source,bash]
 ----
 ---
