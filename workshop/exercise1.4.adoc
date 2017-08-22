@@ -99,7 +99,7 @@ Section 2 - Deploying files and starting a service
 When you need to do pretty much anything with files and directories, use one of the link:{file_url}[Ansible Files] modules.  In this
 case, we'll leverage the `file` and `template` modules.
 
-After that, you will define a task to start the start the apache service.
+After that, you will define a task to start the apache service.
 
 ====
 *Step 1:* Create a `templates` directory in your apache-basic-playbook directory and download two files.
@@ -158,7 +158,7 @@ Section 3 - Defining and using Handlers
 
 There are any number of reasons we often need to restart a service/process including the deployment of a configuration file,
 installing a new package, etc.  There are really two parts to this Section; adding a handler to the playbook and calling the
-handler after the a task.  We will start with the former.
+handler after the task.  We will start with the former.
 
 ====
 *Step 1:* Define a handler
