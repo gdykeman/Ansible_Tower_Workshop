@@ -199,7 +199,7 @@ let's run it and see how it works.
 % ansible-playbook -i ./hosts site.yml -k
 ----
 
-If successful, you're standard output should look similar to the figure below.
+If successful, your standard output should look similar to the figure below.
 
 image::stdout_3.png[caption="Figure 1: ", title="ansible-basic-playbook role-based stdout"]
 
