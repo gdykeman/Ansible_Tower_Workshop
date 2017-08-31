@@ -6,7 +6,7 @@
 ---
 
 ****
-We are now going to run you brand spankin' new playbook on your two web nodes.  To do this,
+We are now going to run your brand spankin' new playbook on your two web nodes.  To do this,
  you are going to use the ```ansible-playbook``` command.
 ====
 *Step 1:* From your playbook directory ( ```~/apache_basic``` ), run your playbook.
