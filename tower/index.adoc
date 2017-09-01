@@ -14,12 +14,9 @@
 ****
 * Arrivals, Introductions
 * Workshop Setup
-* Exercise 1.1 - Ad-Hoc Commands
-* Exercise 1.2 - Writing Your First Playbook
-* Exercise 1.3 - Running Your First Playbook
-* Exercise 1.4 - Using Variables, loops, and handlers
-* Exercise 1.5 - Running the apache-basic-playbook
-* Exercise 1.6 - Roles: Making your playbooks reusable
+* Exercise 1.1 - Installing Ansible Tower
+* Exercise 1.2 - Configuring Ansible Tower
+* Exercise 1.3 - Creating and Running a Job Template
 * Resources, Wrap Up
 ****
 
